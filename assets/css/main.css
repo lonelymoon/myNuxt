@@ -1,0 +1,16 @@
+.default-color{
+  color: #2196F3;
+}
+
+.default-bgColor{
+  background-color: #2196F3;
+}
+
+.img-block{
+  display: block;
+  max-width: 100%;
+}
+
+li{
+  list-style: none;
+}
