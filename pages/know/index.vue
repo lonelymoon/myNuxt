@@ -1,5 +1,5 @@
 <template>
-  <div id="ngnl-page">
+  <div id="gl-page">
     <v-container class="pa-1">
       <v-layout row wrap>
         <v-flex md6 xs12 v-for="(item, index) in points()" :key="index" class="know-wrapper">
@@ -92,6 +92,40 @@ function points() {
     `
   }
   arr.push(p7)
+  let p8 = {
+    title: '关于盒模型',
+    desc: `
+      1. 页面设计和布局时用的一个术语，表示一块内容在页面的存放像盒子摆放，主要有内容-边框-内边距-外边距<br/>
+      2. box-sizing: 规定盒子模型不同的计算方式content-box，padding-box，border-box
+    `
+  }
+  arr.push(p8)
+  let p9 = {
+    title: 'display和position的关系',
+    desc: `
+      1. display确定元素的显示方式，position使元素脱离文档流后会使display失效，元素的显示方式变为inline-block<br/>
+      2. float同样会使display变为inline-block，position脱离文档流后float无效
+    `
+  }
+  arr.push(p9)
+  let p10 = {
+    title: 'flex和inline-flex的区别,block和inline-block的区别',
+    desc: `
+      1. 前一个问题是flex弹性盒模型的容器是内联块级显示还是块级显示<br/>
+      2. block与inline-block的区别也在于内联块级和块级显示的区别
+    `
+  }
+  arr.push(p10)
+  let p11 = {
+    title: 'property与attribute的区别',
+    desc: `
+      1. property和attributies都是properties的子集，而每个attribute是attributies的子集<br/>
+      2. attribute需要通过相应的方法来修改特性，而property可以直接修改属性值进行修改，通常来讲，更改dom元素自带的属性值时互相
+      影响（value除外）<br/>
+      3. 修改新特性的时候互相不影响,attribute取value时取的都是初始值
+    `
+  }
+  arr.push(p11)
   return arr
 }
 

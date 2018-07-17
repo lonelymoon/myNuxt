@@ -131,7 +131,7 @@ export default {
 }
 
 .swiper-slide-text-content{
-  font-size: 20px;
+  font-size: 18px;
   height: auto;
   color: #fff;
 }
