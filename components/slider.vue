@@ -1,19 +1,19 @@
 <template>
-<section class="gl-slider">
+<section class="gl-slider" v-if="this.currentSlides.length !== 0">
   <div class="gl-swiper swiper-container" :data-key="key">
     <div class="swiper-wrapper">
-      <div class="swiper-slide default-bgColor" :style="slideStyles" v-for="(item, index) in slides">
+      <div class="swiper-slide default-bgColor" :style="slideStyles" v-for="(item, index) in currentSlides">
         <div class="swiper-slide-box">
 
           <img :src="item.img" v-if="!!item.img" class="img-block" />
           <!--外部链接-->
           <a :href="(!!item.href? item.href: 'javascript:;')" target="_blank" v-if="!item.local">
 
-            <div class="swiper-slide-text py-3 px-5">
+            <div class="swiper-slide-text py-3 px-5" :data-style="UIStyle">
               <h2 class="swiper-slide-text-title pb-2 mb-2 pr-1">
                 {{item.title}}
               </h2>
-              <p class="swiper-slide-text-content">
+              <p class="swiper-slide-text-content" v-if="UIStyle !== 2">
                 {{item.text}}
               </p>
             </div>
@@ -22,11 +22,11 @@
           <!--nuxt链接-->
           <nuxt-link :to="(!!item.href? item.href: '/')" v-if="item.local">
 
-            <div class="swiper-slide-text py-3 px-5">
+            <div class="swiper-slide-text py-3 px-5" :data-style="UIStyle">
               <h2 class="swiper-slide-text-title pb-2 mb-2 pr-1">
                 {{item.title}}
               </h2>
-              <p class="swiper-slide-text-content">
+              <p class="swiper-slide-text-content" v-if="UIStyle !== 2">
                 {{item.text}}
               </p>
             </div>
@@ -53,38 +53,32 @@ export default {
       default: 300
     },
     height: {
-      type: Number,
-      default: 400
+      type: [String, Number],
+      default: 440
     },
     loop: {
       type: [String, Boolean, Number],
       default: true
+    },
+    type: {
+      type: [String, Number],
+      default: 1
+    },
+    slides: {
+      type: Array,
+      default: () => []
+    },
+    middle: {
+      type: [String, Boolean],
+      default: false
     }
   },
   data() {
     return {
+      // swiper插件容器
+      swiper: null,
       key: this.keyname,
-      slides: [
-        {
-          title: '如何在一个星期内打上王者500点?',
-          text: '这是一个非常良心的上分教程',
-          img: '/slide/slide1.jpg',
-          local: false,
-          href: 'http://www.baidu.com'
-        },
-        {
-          title: '最新一期手游测评',
-          text: '带来2018年最新一期手游测评',
-          img: '/slide/slide2.jpg',
-          local: true,
-          href: '/about'
-        },
-        {
-          title: '8.14英雄联盟全英雄评测',
-          text: '教你如何寻找新的meta',
-          img: '/slide/slide3.jpg'
-        }
-      ]
+      currentSlides: this.slides
     }
   },
   computed: {
@@ -93,11 +87,16 @@ export default {
         overflow: 'hidden',
         maxHeight: this.height + 'px'
       }
+    },
+    // 判断slide风格
+    UIStyle() {
+      let sty = this.type * 1
+      return (sty > 2 || sty < 1) ? 1 : sty
     }
   },
   mounted() {
     let Swiper = this.Swiper
-    let ms = new Swiper('.gl-swiper[data-key="' + this.key + '"]', {
+    this.swiper = new Swiper('.gl-swiper[data-key="' + this.key + '"]', {
       speed: this.speed,
       loop: !!this.loop,
       autoplay: {
@@ -106,7 +105,14 @@ export default {
         disableOnInteraction: false
       }
     })
-    ms.updateSize()
+  },
+  watch: {
+    slides() {
+      this.currentSlides = this.slides
+      if (this.swiper) {
+        this.swiper.update()
+      }
+    }
   }
 }
 </script>
@@ -134,6 +140,27 @@ export default {
   font-size: 18px;
   height: auto;
   color: #fff;
+}
+
+.swiper-slide-text[data-style='2']{
+  left: 0px;
+  top: initial;
+  bottom: 0px;
+  transform: none;
+  width: 100%;
+  padding: 12px 20px !important;
+}
+
+.swiper-slide-text[data-style='2'] .swiper-slide-text-title{
+  text-indent: 1em;
+  font-size: 16px;
+  word-break: keep-all;
+  text-wrap: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-bottom: none;
+  padding: 0px !important;
+  margin: 0px !important;
 }
 
 @media screen and (max-width: 600px){

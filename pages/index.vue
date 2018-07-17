@@ -1,6 +1,6 @@
 <template>
   <section id="gl-page">
-    <gl-slider keyname="home-slide"></gl-slider>
+    <gl-slider keyname="home-slide" :slides="headerSlides"></gl-slider>
 
     <v-container fluid px-1>
       <v-layout row wrap>
@@ -14,7 +14,13 @@
             <gl-panels></gl-panels>
           </div>
         </v-flex>
-        <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>2</v-flex>
+        <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
+          <div class="mb-3">
+            <gl-slider keyname="home-slide2" type="2" height="160" class="mb-3" :slides="middleSlides"></gl-slider>
+            <gl-title text="热门游戏社区"></gl-title>
+            <gl-grid-items col="5"></gl-grid-items>
+          </div>
+        </v-flex>
         <v-flex xs12 sm6 md3 order-sm3 order-md3 px-2>3</v-flex>
       </v-layout>
     </v-container>
@@ -26,7 +32,8 @@
 import {
   GlSlider,
   GlPanels,
-  GlTitle
+  GlTitle,
+  GlGridItems
 } from '../components/'
 
 export default {
@@ -38,10 +45,53 @@ export default {
   components: {
     GlSlider,
     GlPanels,
-    GlTitle
+    GlTitle,
+    GlGridItems
   },
   data() {
-    return {}
+    return {
+      headerSlides: [
+        {
+          title: '如何在一个星期内打上王者500点?',
+          text: '这是一个非常良心的上分教程',
+          img: '/slide/slide1.jpg',
+          local: false,
+          href: 'http://www.baidu.com'
+        },
+        {
+          title: '最新一期手游测评',
+          text: '带来2018年最新一期手游测评',
+          img: '/slide/slide2.jpg',
+          local: true,
+          href: '/about'
+        },
+        {
+          title: '8.14英雄联盟全英雄评测',
+          text: '教你如何寻找新的meta',
+          img: '/slide/slide3.jpg'
+        }
+      ],
+      middleSlides: [
+        {
+          title: '氪出一个未来',
+          img: '/slide/slide4.jpg'
+        },
+        {
+          title: '肝帝强者，恐怖如斯！',
+          img: '/slide/slide5.jpg',
+          local: true,
+          href: '/about'
+        },
+        {
+          title: '我变秃了，也变强了',
+          img: '/slide/slide6.jpg'
+        },
+        {
+          title: '肝！肝！肝！',
+          img: '/slide/slide7.png'
+        }
+      ]
+    }
   },
   mounted() {
     console.log(this)
