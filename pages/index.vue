@@ -13,6 +13,9 @@
             <gl-title text="最新游戏排行"></gl-title>
             <gl-panels></gl-panels>
           </div>
+          <div class="mb-3">
+            <gl-echarts-items></gl-echarts-items>
+          </div>
         </v-flex>
         <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
           <div class="mb-3">
@@ -20,8 +23,16 @@
             <gl-title text="热门游戏社区"></gl-title>
             <gl-grid-items col="5"></gl-grid-items>
           </div>
+          <div class="mb-3">
+            <gl-article-list v-for="n in 5"></gl-article-list>
+          </div>
         </v-flex>
-        <v-flex xs12 sm6 md3 order-sm3 order-md3 px-2>3</v-flex>
+        <v-flex xs12 sm6 md3 order-sm3 order-md3 px-2>
+          <div class="mb-3">
+            <gl-title>热门文章</gl-title>
+            <gl-simple-list></gl-simple-list>
+          </div>
+        </v-flex>
       </v-layout>
     </v-container>
 
@@ -33,7 +44,10 @@ import {
   GlSlider,
   GlPanels,
   GlTitle,
-  GlGridItems
+  GlGridItems,
+  GlArticleList,
+  GlSimpleList,
+  GlEchartsItems
 } from '../components/'
 
 export default {
@@ -46,7 +60,10 @@ export default {
     GlSlider,
     GlPanels,
     GlTitle,
-    GlGridItems
+    GlGridItems,
+    GlArticleList,
+    GlSimpleList,
+    GlEchartsItems
   },
   data() {
     return {

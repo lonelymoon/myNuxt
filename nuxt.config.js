@@ -7,7 +7,7 @@ module.exports = {
     titleTemplate: '%s - GameLife 一个简单的游戏社区',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1,user-scalable=no' },
       { name: 'keywords', content: '游戏,社区,game,策略游戏,手游,手机游戏,ios,安卓,android,PC,moba' },
       { hid: 'description', name: 'description', content: 'GameLife,一个简单的游戏社区' }
     ],
@@ -28,7 +28,8 @@ module.exports = {
   */
   plugins: [
     '~/plugins/vuetify.js',
-    '~/plugins/swiper.js'
+    '~/plugins/swiper.js',
+    '~/plugins/echarts.js'
   ],
   /*
   ** transition
@@ -60,7 +61,8 @@ module.exports = {
     },
     vendor: [
       '~/plugins/vuetify.js',
-      '~/plugins/swiper.js'
+      '~/plugins/swiper.js',
+      '~/plugins/echarts.js'
     ]
   }
 }

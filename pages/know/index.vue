@@ -87,7 +87,7 @@ function points() {
   let p7 = {
     title: '关于渐进式渲染',
     desc: `
-      1. 指浏览器不用等待所有页面资源都渲染好之后再呈现给用户看，而是边下载边渲染<br/>
+      1. 指浏览器不用等待所有页面资源都渲染好之后一起呈现给用户看，而是按步骤一部分一部分进行渲染<br/>
       2. 实现方式：服务器端渲染SSR
     `
   }
@@ -126,6 +126,24 @@ function points() {
     `
   }
   arr.push(p11)
+  let p12 = {
+    title: 'BCF的创建及其作用',
+    desc: `
+      1. BCF定义：块级格式化上下文，形成一个独立的内部空间，使该容器内部的元素和容器的兄弟元素互不影响<br/>
+      2. 创建：1.overflow不为visible；2.float不为none；3.定位不在文档流中；4.display：inline-block，table-cells等<br/>
+      3. 作用：清除浮动，阻止上下外边距折叠
+    `
+  }
+  arr.push(p12)
+  let p13 = {
+    title: '::伪类和:伪类的区别',
+    desc: `
+      1. 相同点：功能一样，都表示伪类对象<br/>
+      2. 不同点：:伪类属于css3语法，::伪类属于css3语法<br/>
+      3. 特性：content必须要有，content里面的内容不会添加到dom中，不能用js操作
+    `
+  }
+  arr.push(p13)
   return arr
 }
 

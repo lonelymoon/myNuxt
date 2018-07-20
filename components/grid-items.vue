@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'grid-tabs',
+  name: 'gl-grid-items',
   props: {
     col: {
       type: [Number, String],

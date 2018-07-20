@@ -1,6 +1,7 @@
 <template>
 <div class="gl-title-wrapper blue py-2 px-4">
   {{text}}
+  <slot v-if="!text"></slot>
 </div>
 </template>
 
@@ -10,7 +11,7 @@ export default {
   props: {
     text: {
       type: [String, Number],
-      default: '标题'
+      default: ''
     }
   }
 }
