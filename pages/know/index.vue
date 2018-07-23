@@ -144,6 +144,22 @@ function points() {
     `
   }
   arr.push(p13)
+  let p14 = {
+    title: 'JS基本类型，引用类型',
+    desc: `
+      1. 基本类型：String,Number,undefined,null,Boolean,Symbol<br/>
+      2. 引用类型：Object
+    `
+  }
+  arr.push(p14)
+  let p15 = {
+    title: '事件冒泡和事件捕获',
+    desc: `
+      1. 事件冒泡：触发源到window对象<br/>
+      2. 事件捕获：window对象到触发源
+    `
+  }
+  arr.push(p15)
   return arr
 }
 
