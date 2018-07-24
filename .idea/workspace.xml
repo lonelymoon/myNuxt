@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b68a8171-fa4e-4c71-9859-eff455fd01ff" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/know/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/know/index.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -41,11 +41,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.vue" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/know/index.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="346">
-              <caret line="210" column="44" selection-start-line="210" selection-start-column="44" selection-end-line="210" selection-end-column="44" />
+              <caret line="210" column="50" selection-start-line="210" selection-start-column="50" selection-end-line="210" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -99,9 +108,9 @@
         <option value="$PROJECT_DIR$/components/echarts-item.vue" />
         <option value="$PROJECT_DIR$/plugins/echarts.js" />
         <option value="$PROJECT_DIR$/pages/index.vue" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/webhook.js" />
         <option value="$PROJECT_DIR$/pages/know/index.vue" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -177,9 +186,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/main.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/main.map</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/package-lock.json</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/package.json</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -308,7 +316,7 @@
       <workItem from="1531971825489" duration="3257000" />
       <workItem from="1532057544027" duration="15596000" />
       <workItem from="1532315969043" duration="9497000" />
-      <workItem from="1532400677116" duration="11478000" />
+      <workItem from="1532400677116" duration="12028000" />
     </task>
     <task id="LOCAL-00001" summary="1. 添加grid-items，artical-list组件&#10;2. 修改了slide,title组件&#10;3. 修改了部分样式和html代码">
       <created>1531820820158</created>
@@ -352,11 +360,25 @@
       <option name="project" value="LOCAL" />
       <updated>1532425721330</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="webhook测试">
+      <created>1532426616972</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1532426616972</updated>
+    </task>
+    <task id="LOCAL-00008" summary="webhook测试">
+      <created>1532426903429</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1532426903429</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96720000" />
+    <option name="totallyTimeSpent" value="97270000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -402,7 +424,8 @@
     <MESSAGE value="1. 添加grid-items，artical-list组件&#10;2. 修改了slide,title组件&#10;3. 修改了部分样式和html代码" />
     <MESSAGE value="1. 新增了simple-list,tag组件&#10;2. 增加了echarts插件" />
     <MESSAGE value="更新部分代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新部分代码" />
+    <MESSAGE value="webhook测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="webhook测试" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -730,13 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -764,7 +780,14 @@
     <entry file="file://$PROJECT_DIR$/pages/know/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
-          <caret line="210" column="44" selection-start-line="210" selection-start-column="44" selection-end-line="210" selection-end-column="44" />
+          <caret line="210" column="50" selection-start-line="210" selection-start-column="50" selection-end-line="210" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
