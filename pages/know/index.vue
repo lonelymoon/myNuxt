@@ -139,7 +139,7 @@ function points() {
     title: '::伪类和:伪类的区别',
     desc: `
       1. 相同点：功能一样，都表示伪类对象<br/>
-      2. 不同点：:伪类属于css3语法，::伪类属于css3语法<br/>
+      2. 不同点：:伪类属于css2语法，::伪类属于css3语法<br/>
       3. 特性：content必须要有，content里面的内容不会添加到dom中，不能用js操作
     `
   }
@@ -156,10 +156,62 @@ function points() {
     title: '事件冒泡和事件捕获',
     desc: `
       1. 事件冒泡：触发源到window对象<br/>
-      2. 事件捕获：window对象到触发源
+      2. 事件捕获：window对象到触发源<br/>
+      3. 事件委托：
+      <pre>
+      let on = function(event,parent,target,callback = function(){}){
+        let ParentEles = document.querySelectorAll(parent);
+        function getTargetNode(ele,className,parentNode){
+          if( ele === parentNode ){
+            return null;
+          }
+          if( ele.className.includes(className) ){
+            return ele;
+          }
+          return getTargetNode(ele.parentNode,className,parentNode);
+        }
+
+        ParentEles.each(function(parent){
+          parent["on"+event] = function(e){
+            let tar = getTargetNode(e.target,target,parent);
+            if( tar !== null ) {
+              callback(tar)
+            }
+        });
+      };
+      </pre>
     `
   }
   arr.push(p15)
+  let p16 = {
+    title: 'new 一个对象具体做了什么',
+    desc: `
+      1. 创建一个新对象<br/>
+      2. 新对象的_proto_属性指向构造函数的原型对象<br/>
+      3. 将构造函数的作用域赋值给新对象。（也所以this对象指向新对象）<br/>
+      4. 执行构造函数内部的代码，将属性添加给新对象中的this对象<br/>
+      5. 返回新对象
+    `
+  }
+  arr.push(p16)
+  let p17 = {
+    title: '作用域和作用域链，执行环境',
+    desc: `
+      1. 作用域：变量与函数的可访问范围，抛开with和eval语句，变量的作用域在写代码的时候就已经确定，分为局部作用域和全局作用域<br/>
+      2. 作用域链：保证对执行环境中可访问变量和函数的有序访问<br/>
+      3. 执行环境：定义了变量或函数有权访问的其他数据，在函数调用时确定
+    `
+  }
+  arr.push(p17)
+  let p18 = {
+    title: '原生对象，宿主对象和内置对象',
+    desc: `
+      1. 内置对象：在引擎初始化时就已经被创建好的对象<br/>
+      2. 原生对象：除了包括内置对象外，还包括了引擎运行时动态创建的对象<br/>
+      3. 宿主对象：运行环境基于某种机制注入到引擎中的一些对象
+    `
+  }
+  arr.push(p18)
   return arr
 }
 

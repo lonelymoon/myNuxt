@@ -12,3 +12,6 @@ dist
 
 # idea
 .idea
+
+# webhook
+webhook.js
