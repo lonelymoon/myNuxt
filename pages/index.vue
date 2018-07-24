@@ -24,7 +24,7 @@
             <gl-grid-items col="5"></gl-grid-items>
           </div>
           <div class="mb-3">
-            <gl-article-list v-for="n in 5"></gl-article-list>
+            <gl-article-list v-for="n in 5" :key="n"></gl-article-list>
           </div>
         </v-flex>
         <v-flex xs12 sm6 md3 order-sm3 order-md3 px-2>

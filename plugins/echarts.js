@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import ECharts from 'echarts/lib/echarts'
-// 饼图
-import 'echarts/lib/chart/pie'
 // 柱状图
 import 'echarts/lib/chart/bar'
 // 提示
