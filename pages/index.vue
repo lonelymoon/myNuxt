@@ -14,6 +14,7 @@
             <gl-panels></gl-panels>
           </div>
           <div class="mb-3">
+            <gl-title>手游趋势图</gl-title>
             <gl-echarts-items></gl-echarts-items>
           </div>
         </v-flex>
