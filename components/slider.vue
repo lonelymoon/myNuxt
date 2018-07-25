@@ -5,7 +5,9 @@
       <div class="swiper-slide default-bgColor" :style="slideStyles" v-for="(item, index) in currentSlides">
         <div class="swiper-slide-box">
 
-          <img :src="item.img" v-if="!!item.img" class="img-block" />
+          <img :data-src="item.img" v-if="!!item.img" class="img-block swiper-lazy" />
+          <div class="swiper-lazy-preloader"></div>
+
           <!--外部链接-->
           <a :href="(!!item.href? item.href: 'javascript:;')" target="_blank" v-if="!item.local">
 
@@ -103,6 +105,9 @@ export default {
         delay: 4000,
         stopOnLastSlide: false,
         disableOnInteraction: false
+      },
+      lazy: {
+        loadPrevNext: true
       }
     })
   },
