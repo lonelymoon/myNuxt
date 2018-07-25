@@ -9,22 +9,22 @@
             <gl-title text="热门游戏排行"></gl-title>
             <gl-panels></gl-panels>
           </div>
-          <div class="mb-3">
+          <div class="mb-3" v-if="secondLoad">
             <gl-title text="最新游戏排行"></gl-title>
             <gl-panels></gl-panels>
           </div>
-          <div class="mb-3">
+          <div class="mb-3" v-if="thirdLoad">
             <gl-title>近期手游流行趋势对比图</gl-title>
             <gl-echarts-items></gl-echarts-items>
           </div>
         </v-flex>
         <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
-          <div class="mb-3">
+          <div class="mb-3" v-if="secondLoad">
             <gl-slider keyname="home-slide2" type="2" height="160" class="mb-3" :slides="middleSlides"></gl-slider>
             <gl-title text="热门游戏社区"></gl-title>
             <gl-grid-items col="5"></gl-grid-items>
           </div>
-          <div class="mb-3">
+          <div class="mb-3" v-if="thirdLoad">
             <gl-article-list v-for="n in 5" :key="n"></gl-article-list>
           </div>
         </v-flex>
@@ -108,11 +108,14 @@ export default {
           title: '肝！肝！肝！',
           img: '/slide/slide7.png'
         }
-      ]
+      ],
+      secondLoad: false,
+      thirdLoad: false
     }
   },
-  mounted() {
-    console.log(this)
+  async mounted() {
+    await setTimeout(() => { this.secondLoad = true }, 500)
+    await setTimeout(() => { this.thirdLoad = true }, 500)
   }
 }
 </script>

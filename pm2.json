@@ -3,7 +3,9 @@
     {
       "name": "myNuxt",
       "script": "build/main.js",
-      "watch": true,
+      "watch": [
+        ".nuxt"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
