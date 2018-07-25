@@ -3,6 +3,7 @@
     {
       "name": "myNuxt",
       "script": "./build/main.js",
+      "cwd": "/web/wwwroot/myNuxt",
       "watch": true,
       "env": {
         "NODE_ENV": "development"
