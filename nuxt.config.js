@@ -31,8 +31,7 @@ module.exports = {
   */
   plugins: [
     '~/plugins/vuetify.js',
-    '~/plugins/swiper.js',
-    '~/plugins/echarts.js'
+    '~/plugins/swiper.js'
   ],
   /*
   ** transition
@@ -76,15 +75,14 @@ module.exports = {
       if (ctx.isServer) {
         config.externals = [
           nodeExternals({
-            whitelist: [/^vuetify/, /^swiper/, /^echarts/]
+            whitelist: [/^vuetify/, /^swiper/]
           })
         ]
       }
     },
     vendor: [
       '~/plugins/vuetify.js',
-      '~/plugins/swiper.js',
-      '~/plugins/echarts.js'
+      '~/plugins/swiper.js'
     ],
     extractCSS: true
   }

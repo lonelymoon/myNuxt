@@ -15,13 +15,12 @@
           </div>
           <div class="mb-3" v-if="false">
             <gl-title>近期手游流行趋势对比图</gl-title>
-            <gl-echarts-items></gl-echarts-items>
+            <!--<gl-echarts-items></gl-echarts-items>-->
           </div>
         </v-flex>
         <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
           <div class="mb-3">
             <gl-slider
-                v-if="false"
                 keyname="home-slide2"
                 type="2" height="160"
                 class="mb-3"
@@ -53,8 +52,7 @@ import {
   GlTitle,
   GlGridItems,
   GlArticleList,
-  GlSimpleList,
-  GlEchartsItems
+  GlSimpleList
 } from '../components/'
 
 export default {
@@ -69,8 +67,7 @@ export default {
     GlTitle,
     GlGridItems,
     GlArticleList,
-    GlSimpleList,
-    GlEchartsItems
+    GlSimpleList
   },
   data() {
     return {
