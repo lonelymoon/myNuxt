@@ -20,7 +20,13 @@
         </v-flex>
         <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
           <div class="mb-3">
-            <gl-slider keyname="home-slide2" type="2" height="160" class="mb-3" :slides="middleSlides"></gl-slider>
+            <gl-slider
+                v-if="false"
+                keyname="home-slide2"
+                type="2" height="160"
+                class="mb-3"
+                :slides="middleSlides">
+            </gl-slider>
             <gl-title text="热门游戏社区"></gl-title>
             <gl-grid-items col="5"></gl-grid-items>
           </div>

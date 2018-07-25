@@ -4,7 +4,12 @@
       "name": "myNuxt",
       "script": "build/main.js",
       "watch": [
-        ".nuxt"
+        "layout",
+        "pages",
+        "components",
+        "assets",
+        "static",
+        "plugins"
       ],
       "env": {
         "NODE_ENV": "development"
