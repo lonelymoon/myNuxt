@@ -188,7 +188,7 @@ function points() {
     desc: `
       1. 创建一个新对象<br/>
       2. 新对象的_proto_属性指向构造函数的原型对象<br/>
-      3. 将构造函数的作用域赋值给新对象。（也所以this对象指向新对象）<br/>
+      3. 将构造函数的作用域赋值给新对象。（this对象指向新对象）<br/>
       4. 执行构造函数内部的代码，将属性添加给新对象中的this对象<br/>
       5. 返回新对象
     `
@@ -212,6 +212,14 @@ function points() {
       `
   }
   arr.push(p18)
+  let p19 = {
+    title: 'setTimeout和promise的执行顺序',
+    desc: `
+      1. Promise的任务会在当前事件循环末尾中执行<br/>
+      2. 而setTimeout中的任务是在下一次事件循环执行
+      `
+  }
+  arr.push(p19)
   return arr
 }
 

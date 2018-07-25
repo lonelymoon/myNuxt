@@ -19,10 +19,12 @@
     "node-cmd": "^3.0.0",
     "nuxt": "latest",
     "source-map-support": "^0.4.15",
-    "vuetify": "^1.1.4"
+    "vuetify": "^1.1.8"
   },
   "devDependencies": {
+    "babel": "^6.23.0",
     "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-imports": "^1.5.0",
     "backpack-core": "^0.3.0",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^10.2.1",
@@ -36,6 +38,9 @@
     "less-loader": "^4.1.0",
     "nodemon": "^1.11.0",
     "scmp": "^2.0.0",
-    "swiper": "^4.3.3"
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "swiper": "^4.3.3",
+    "transform-runtime": "0.0.0"
   }
 }

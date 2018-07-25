@@ -1,3 +1,5 @@
+const nodeExternals = require('webpack-node-externals')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -20,6 +22,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~/assets/vuetify/app.styl',
     '~/assets/css/main.css',
     '~/assets/icons/css/all.css'
   ],
@@ -46,6 +49,18 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    babel: {
+      plugins: [
+        ['transform-imports',
+          {
+            'vuetify': {
+              'transform': 'vuetify/es5/components/${member}',
+              'preventFullImport': true
+            }
+          }
+        ]
+      ]
+    },
     /*
      ** Run ESLINT on save
      */
@@ -58,11 +73,19 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      if (ctx.isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [/^vuetify/, /^swiper/, /^echarts/]
+          })
+        ]
+      }
     },
     vendor: [
       '~/plugins/vuetify.js',
       '~/plugins/swiper.js',
       '~/plugins/echarts.js'
-    ]
+    ],
+    extractCSS: true
   }
 }

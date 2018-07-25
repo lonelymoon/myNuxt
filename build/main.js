@@ -65,12 +65,14 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
+
+var nodeExternals = __webpack_require__(5);
 
 module.exports = {
   /*
@@ -85,7 +87,7 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['~/assets/css/main.css', '~/assets/icons/css/all.css'],
+  css: ['~/assets/vuetify/app.styl', '~/assets/css/main.css', '~/assets/icons/css/all.css'],
   /*
   ** plugins
   */
@@ -105,6 +107,14 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    babel: {
+      plugins: [['transform-imports', {
+        'vuetify': {
+          'transform': 'vuetify/es5/components/${member}',
+          'preventFullImport': true
+        }
+      }]]
+    },
     /*
      ** Run ESLINT on save
      */
@@ -117,9 +127,15 @@ module.exports = {
           exclude: /(node_modules)/
         });
       }
+      if (ctx.isServer) {
+        config.externals = [nodeExternals({
+          whitelist: [/^vuetify/, /^swiper/, /^echarts/]
+        })];
+      }
     },
 
-    vendor: ['~/plugins/vuetify.js', '~/plugins/swiper.js', '~/plugins/echarts.js']
+    vendor: ['~/plugins/vuetify.js', '~/plugins/swiper.js', '~/plugins/echarts.js'],
+    extractCSS: true
   }
 };
 
@@ -150,12 +166,18 @@ module.exports = require("regenerator-runtime");
 
 /***/ },
 /* 5 */
+/***/ function(module, exports) {
+
+module.exports = require("webpack-node-externals");
+
+/***/ },
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_koa__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_nuxt__ = __webpack_require__(3);
@@ -163,11 +185,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 
 var start = function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
+  var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2() {
     var _this = this;
 
     var app, host, port, config, nuxt, builder;
-    return __WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+    return __WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
@@ -198,8 +220,8 @@ var start = function () {
           case 10:
 
             app.use(function () {
-              var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
-                return __WEBPACK_IMPORTED_MODULE_0_C_web_wwwroot_myNuxt_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+              var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(ctx, next) {
+                return __WEBPACK_IMPORTED_MODULE_0_E_myWeb_ComsenzEXP_wwwroot_Github_myNuxt_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
