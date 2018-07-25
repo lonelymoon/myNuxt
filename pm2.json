@@ -2,7 +2,8 @@
   "app": [
     {
       "name": "myNuxt",
-      "script": "node ./build/main.js",
+      "script": "./build/main.js",
+      "cwd": "",
       "watch": true,
       "env": {
         "NODE_ENV": "development"
