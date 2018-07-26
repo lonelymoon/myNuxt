@@ -4,7 +4,8 @@
       "name": "myNuxt",
       "script": "build/main.js",
       "watch": [
-        "build"
+        "build",
+        ".nuxt/dist"
       ],
       "watch_options": {
         "usePolling": true
