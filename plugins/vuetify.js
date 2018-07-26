@@ -17,7 +17,7 @@ import {
   VFooter
 } from 'vuetify'
 
-import { Ripple } from 'vuetify/es5/directives'
+import { Ripple, Resize } from 'vuetify/es5/directives'
 
 Vue.use(Vuetify, {
   components: {
@@ -37,6 +37,7 @@ Vue.use(Vuetify, {
     VFooter
   },
   directives: {
-    Ripple
+    Ripple,
+    Resize
   }
 })
