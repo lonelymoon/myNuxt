@@ -1,7 +1,10 @@
 <template>
 <div class="gl-question-list-wrapper">
   <v-card>
-    list
+    <div class="question-list-box">
+      <div class="list-left">l</div>
+      <div class="list-right">r</div>
+    </div>
   </v-card>
 </div>
 </template>
