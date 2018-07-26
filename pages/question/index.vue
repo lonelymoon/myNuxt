@@ -37,6 +37,9 @@ export default {
   components: {
     GlTitle,
     GlQuestionList
+  },
+  data() {
+    return {}
   }
 }
 </script>

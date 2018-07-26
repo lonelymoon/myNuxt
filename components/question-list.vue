@@ -3,7 +3,7 @@
   <v-card>
     <div class="question-list-box">
       <div class="list-left">lasd</div>
-      <div class="list-right">rads</div>
+      <div class="list-right">radsasd</div>
     </div>
   </v-card>
 </div>
