@@ -4,7 +4,7 @@
       "name": "myNuxt",
       "script": "build/main.js",
       "watch": [
-        ".nuxt/dist"
+        "build"
       ],
       "env": {
         "NODE_ENV": "development"
