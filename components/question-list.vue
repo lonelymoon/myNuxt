@@ -2,8 +2,8 @@
 <div class="gl-question-list-wrapper">
   <v-card>
     <div class="question-list-box">
-      <div class="list-left">l</div>
-      <div class="list-right">r</div>
+      <div class="list-left">lasd</div>
+      <div class="list-right">rads</div>
     </div>
   </v-card>
 </div>
