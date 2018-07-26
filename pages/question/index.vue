@@ -5,6 +5,7 @@
       <v-flex md8 xs12 px-2>
         <div class="blue">
           <gl-title>问答列表展示</gl-title>
+          <gl-question-list></gl-question-list>
         </div>
       </v-flex>
       <v-flex md4 xs12 px-2>
@@ -25,7 +26,8 @@
 
 <script>
 import {
-  GlTitle
+  GlTitle,
+  GlQuestionList
 } from '../../components/'
 
 export default {
@@ -33,7 +35,8 @@ export default {
     title: '问答'
   },
   components: {
-    GlTitle
+    GlTitle,
+    GlQuestionList
   }
 }
 </script>
