@@ -1,6 +1,15 @@
 <template>
 <section id="gl-page">
-  <div>hello,world!</div>
+  <v-container fluid px-1>
+    <v-layout row wrap>
+      <v-flex md8 xs12 px-2>
+        <div class="blue">asd</div>
+      </v-flex>
+      <v-flex md4 xs12 px-2>
+        <div class="red">asda</div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </section>
 </template>
 
