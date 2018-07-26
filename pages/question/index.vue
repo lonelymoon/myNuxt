@@ -1,6 +1,6 @@
 <template>
 <section id="gl-page">
-  <div>hello,worldasdasd</div>
+  <div>hello,world!</div>
 </section>
 </template>
 
