@@ -4,6 +4,7 @@
 
     <v-container fluid px-1>
       <v-layout row wrap>
+
         <v-flex xs12 sm6 md3 order-sm2 order-md1 px-2>
           <div class="mb-3">
             <gl-title text="热门游戏排行"></gl-title>
@@ -13,14 +14,16 @@
             <gl-title text="最新游戏排行"></gl-title>
             <gl-panels></gl-panels>
           </div>
-          <div class="mb-3" v-if="false">
+          <div class="mb-3" v-if="laterLoaded">
             <gl-title>近期手游流行趋势对比图</gl-title>
-            <!--<gl-echarts-items></gl-echarts-items>-->
+            <gl-echarts-items></gl-echarts-items>
           </div>
         </v-flex>
+
         <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
           <div class="mb-3">
             <gl-slider
+                v-if="laterLoaded"
                 keyname="home-slide2"
                 type="2" height="160"
                 class="mb-3"
@@ -29,16 +32,18 @@
             <gl-title text="热门游戏社区"></gl-title>
             <gl-grid-items col="5"></gl-grid-items>
           </div>
-          <div class="mb-3">
+          <div class="mb-3" v-if="laterLoaded">
             <gl-article-list v-for="n in 5" :key="n"></gl-article-list>
           </div>
         </v-flex>
+
         <v-flex xs12 sm6 md3 order-sm3 order-md3 px-2>
           <div class="mb-3">
             <gl-title>热门文章</gl-title>
             <gl-simple-list></gl-simple-list>
           </div>
         </v-flex>
+
       </v-layout>
     </v-container>
 
@@ -52,7 +57,8 @@ import {
   GlTitle,
   GlGridItems,
   GlArticleList,
-  GlSimpleList
+  GlSimpleList,
+  GlEchartsItems
 } from '../components/'
 
 export default {
@@ -67,7 +73,8 @@ export default {
     GlTitle,
     GlGridItems,
     GlArticleList,
-    GlSimpleList
+    GlSimpleList,
+    GlEchartsItems
   },
   data() {
     return {
@@ -112,11 +119,17 @@ export default {
           img: '/slide/slide7.png'
         }
       ],
-      secondLoad: false,
-      thirdLoad: false
+      laterLoaded: false
     }
   },
-  mounted() {}
+  methods: {
+    laterLoad() {
+      this.laterLoaded = true
+    }
+  },
+  mounted() {
+    this.laterLoad()
+  }
 }
 </script>
 

@@ -31,7 +31,8 @@ module.exports = {
   */
   plugins: [
     '~/plugins/vuetify.js',
-    '~/plugins/swiper.js'
+    '~/plugins/swiper.js',
+    '~/plugins/echarts.js'
   ],
   /*
   ** transition
@@ -82,7 +83,8 @@ module.exports = {
     },
     vendor: [
       '~/plugins/vuetify.js',
-      '~/plugins/swiper.js'
+      '~/plugins/swiper.js',
+      '~/plugins/echarts.js'
     ],
     extractCSS: true
   }
