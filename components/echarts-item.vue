@@ -13,34 +13,100 @@ export default {
     return {}
   },
   mounted() {
+    let height = 36
     let el = this.$refs.chart1
     let echarts = this.$echarts.init(el)
     let option = {
       title: {
-        text: 'ECharts 入门示例'
+        text: '手游趋势展示'
       },
       tooltip: {},
       legend: {
-        data: ['销量']
+        data: ['本周下载数', '上周下载数']
       },
       xAxis: {
         type: 'value'
       },
       yAxis: {
         type: 'category',
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-      },
-      series: [{
-        name: '销量',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20],
-        itemStyle: {
-          emphasis: {
-            shadowBlur: 200,
-            shadowColor: 'rgba(0, 0, 0, 0.7)'
+        inverse: true,
+        data: ['崩坏3', '营养师', '亡者农药', '暖暖', '扶他狗', '游戏3'],
+        axisLabel: {
+          formatter: function (value, index) {
+            let arr = ['b3', 'yys', 'wzny', 'nn', 'fgo', 'game3']
+            return '{' + arr[index] + '|}'
+          },
+          margin: 10,
+          rich: {
+            b3: {
+              height,
+              align: 'center',
+              backgroundColor: {
+                image: '/logos/logo9.png'
+              }
+            },
+            yys: {
+              height,
+              align: 'center',
+              backgroundColor: {
+                image: '/logos/logo6.png'
+              }
+            },
+            wzny: {
+              height,
+              align: 'center',
+              backgroundColor: {
+                image: '/logos/logo1.png'
+              }
+            },
+            nn: {
+              height,
+              align: 'center',
+              backgroundColor: {
+                image: '/logos/logo5.png'
+              }
+            },
+            fgo: {
+              height,
+              align: 'center',
+              backgroundColor: {
+                image: '/logos/logo11.png'
+              }
+            },
+            game3: {
+              height,
+              align: 'center',
+              backgroundColor: {
+                image: '/logos/logo3.png'
+              }
+            }
           }
         }
-      }]
+      },
+      series: [
+        {
+          name: '本周下载数',
+          type: 'bar',
+          data: [500, 2000, 3600, 1000, 1000, 2000],
+          itemStyle: {
+            emphasis: {
+              shadowBlur: 200,
+              shadowColor: 'rgba(0, 0, 0, 0.7)'
+            }
+          }
+        },
+        {
+          name: '上周下载数',
+          type: 'bar',
+          data: [1000, 1300, 3223, 1233, 203, 4000],
+          itemStyle: {
+            emphasis: {
+              shadowBlur: 200,
+              shadowColor: 'rgba(0, 0, 0, 0.7)'
+            }
+          }
+        }
+      ]
     }
     // 使用刚指定的配置项和数据显示图表。
     echarts.setOption(option)

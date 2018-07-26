@@ -14,10 +14,6 @@
             <gl-title text="最新游戏排行"></gl-title>
             <gl-panels></gl-panels>
           </div>
-          <div class="mb-3" v-if="laterLoaded">
-            <gl-title>近期手游流行趋势对比图</gl-title>
-            <gl-echarts-items></gl-echarts-items>
-          </div>
         </v-flex>
 
         <v-flex xs12 sm12 md6 order-sm1 order-md2 px-2>
@@ -31,6 +27,10 @@
             </gl-slider>
             <gl-title text="热门游戏社区"></gl-title>
             <gl-grid-items col="5"></gl-grid-items>
+          </div>
+          <div class="mb-3" v-if="laterLoaded">
+            <gl-title>近期手游流行趋势对比图</gl-title>
+            <gl-echarts-items></gl-echarts-items>
           </div>
           <div class="mb-3" v-if="laterLoaded">
             <gl-article-list v-for="n in 5" :key="n"></gl-article-list>
