@@ -41,8 +41,8 @@ module.exports = {
   transition: {
     mode: 'out-in',
     name: 'page',
-    enterActiveClass: 'animated fadeInLeft',
-    leaveActiveClass: 'animated fadeOutRight'
+    enterActiveClass: 'animated faster fadeInLeft',
+    leaveActiveClass: 'animated fadeOutRight delay-2s'
   },
   /*
   ** Customize the progress-bar color
