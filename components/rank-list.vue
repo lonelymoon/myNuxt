@@ -1,6 +1,6 @@
 <template>
 <div class="gl-rank-list-wrapper">
-  <v-card v-for="n in 10">
+  <v-card v-for="n in 10" :key="n">
     <div class="gl-rank-list pl-4 pr-1 py-2">
       <div class="gl-rank" :data-rank="n">{{n}}</div>
       <div class="gl-rank-img mx-2">
