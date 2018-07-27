@@ -2,23 +2,57 @@
 <section id="gl-page">
   <v-container fluid px-1>
     <v-layout row wrap>
-      <v-flex md8 xs12 px-2>
+      <v-flex md8 xs12 px-2 mb-3>
         <div class="blue">
           <gl-title>问答列表展示</gl-title>
-          <gl-question-list v-for="(list, index) in lists" :list="list" :key="list.question.qid">
-          </gl-question-list>
+          <!--大屏显示-->
+          <v-tabs right show-arrows class="hidden-xs-only">
+
+            <v-tab>最近回答</v-tab>
+            <v-tab>待回答</v-tab>
+            <v-tab>已回答</v-tab>
+            <v-tab>热门回答</v-tab>
+
+            <v-tab-item v-for="n in 4">
+              <v-card><v-divider></v-divider></v-card>
+              <gl-question-list v-for="(list, index) in lists" :list="list" :key="list.question.qid">
+              </gl-question-list>
+            </v-tab-item>
+
+          </v-tabs>
+          <!--小屏-->
+          <v-tabs centered show-arrows class="hidden-sm-and-up">
+
+            <v-tab>最近回答</v-tab>
+            <v-tab>待回答</v-tab>
+            <v-tab>已回答</v-tab>
+            <v-tab>热门回答</v-tab>
+
+            <v-tab-item v-for="n in 4">
+              <v-card><v-divider></v-divider></v-card>
+              <gl-question-list v-for="(list, index) in lists" :list="list" :key="list.question.qid">
+              </gl-question-list>
+            </v-tab-item>
+
+          </v-tabs>
+
         </div>
       </v-flex>
       <v-flex md4 xs12 px-2>
-        <div class="mb-3">
-          <gl-title>热门问答排行</gl-title>
-        </div>
-        <div class="mb-3">
-          <gl-title>用户积分排行</gl-title>
-        </div>
-        <div class="mb-3">
-          <gl-title>社区热度排行</gl-title>
-        </div>
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md12 class="mb-3">
+            <gl-title>热门问答排行</gl-title>
+            <gl-rank-list></gl-rank-list>
+          </v-flex>
+          <v-flex xs12 sm6 md12 class="mb-3">
+            <gl-title>用户积分排行</gl-title>
+            <gl-rank-list></gl-rank-list>
+          </v-flex>
+          <v-flex xs12 sm12 md12 class="mb-3">
+            <gl-title>社区热度排行</gl-title>
+            <gl-rank-list></gl-rank-list>
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
@@ -28,7 +62,8 @@
 <script>
 import {
   GlTitle,
-  GlQuestionList
+  GlQuestionList,
+  GlRankList
 } from '../../components/'
 
 export default {
@@ -37,7 +72,8 @@ export default {
   },
   components: {
     GlTitle,
-    GlQuestionList
+    GlQuestionList,
+    GlRankList
   },
   data() {
     return {

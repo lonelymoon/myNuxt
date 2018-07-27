@@ -1,7 +1,6 @@
 <template>
 <div class="gl-title-wrapper blue py-2 px-4">
-  {{text}}
-  <slot v-if="!text"></slot>
+  {{text}}<slot v-if="!text"></slot>
 </div>
 </template>
 
