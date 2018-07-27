@@ -5,7 +5,8 @@
       <v-flex md8 xs12 px-2>
         <div class="blue">
           <gl-title>问答列表展示</gl-title>
-          <gl-question-list></gl-question-list>
+          <gl-question-list v-for="(list, index) in lists" :list="list" :key="list.question.qid">
+          </gl-question-list>
         </div>
       </v-flex>
       <v-flex md4 xs12 px-2>
@@ -39,7 +40,136 @@ export default {
     GlQuestionList
   },
   data() {
-    return {}
+    return {
+      lists: [
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 1,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        },
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 2,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        },
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 3,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        },
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 4,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        },
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 5,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        },
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 6,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        },
+        {
+          user: {
+            name: '孤月',
+            title: '管理员',
+            level: 9,
+            uid: 1,
+            avatar: '/logos/logo1.png'
+          },
+          question: {
+            qid: 7,
+            date: '2018年4月14日 15:30',
+            title: '啊圣诞节啊手机打就是看电视卡',
+            imgsrc: '/logos/logo7.png',
+            describe: `阿瑟大时代空间啊睡觉的爱上了的撒旦看见啊收到了啊速度进来撒的力量爱看电视剧拉德斯基阿斯利
+                  打算几点啦受打击了萨都剌啊收到了卡多少级啊是的阿拉斯加打开了撒来得及`,
+            voteNum: 4
+          }
+        }
+      ]
+    }
   }
 }
 </script>
