@@ -14,8 +14,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'GameLife,一个简单的游戏社区' }
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {rel: 'stylesheet', href: 'https://fonts.cat.net/css?family=Roboto:300,400,500,700|Material+Icons'}
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.cat.net/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
   /*
@@ -23,6 +23,7 @@ module.exports = {
   */
   css: [
     '~/assets/vuetify/app.styl',
+    '~/assets/css/animate.min.css',
     '~/assets/css/main.css',
     '~/assets/icons/css/all.css'
   ],
@@ -38,8 +39,10 @@ module.exports = {
   ** transition
   */
   transition: {
+    mode: 'out-in',
     name: 'page',
-    mode: 'out-in'
+    enterActiveClass: 'animated fadeInLeft',
+    leaveActiveClass: 'animated fadeOutRight'
   },
   /*
   ** Customize the progress-bar color
