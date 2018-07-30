@@ -72,7 +72,7 @@ export default {
     },
     onResize() {
       if (!this.item.question) return false
-      let w = this.$refs[this.item.question.qid].clientWidth
+      let w = this.$refs[this.item.question.qid].innerWidth
       this.isMobile = !!(w <= 400)
     }
   },

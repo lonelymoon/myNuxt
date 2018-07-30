@@ -2,7 +2,7 @@
 <section id="gl-page">
   <v-container fluid>
     <v-layout wrap row>
-      <v-flex md3 xs6 px-1 mb-3>
+      <v-flex md3 sm6 xs12 px-1 order-xs2 order-sm1 mb-3>
         <div>
           <gl-title>热门游戏社区</gl-title>
           <gl-grid-items col="4"></gl-grid-items>
@@ -16,17 +16,22 @@
           <gl-grid-items col="4"></gl-grid-items>
         </div>
       </v-flex>
-      <v-flex md4 xs6 px-1 mb-3>
+      <v-flex md4 sm6 xs12 px-1 order-xs1 order-sm2 mb-3>
         <div class="mb-3">
-          这里放置功能按钮栏
+          <gl-fn-btn-items></gl-fn-btn-items>
         </div>
         <div class="mb-3">
           放置趋势和活动
         </div>
       </v-flex>
-      <v-flex md5 xs12 px-1 mb-3>
+      <v-flex md5 sm12 xs12 px-1 order-xs3 order-sm3 mb-3>
         <div class="mb-3">
-          这里放置slide
+          <gl-slider
+              keyname="cm-slider1"
+              type="2" height="160"
+              class="mb-3"
+              :slides="slides"
+          ></gl-slider>
         </div>
         <div class="mb-3">
           放置文章
@@ -40,7 +45,9 @@
 <script>
 import {
   GlGridItems,
-  GlTitle
+  GlTitle,
+  GlFnBtnItems,
+  GlSlider
 } from '../../components'
 
 export default {
@@ -48,8 +55,34 @@ export default {
     title: '社区'
   },
   components: {
+    GlSlider,
     GlGridItems,
-    GlTitle
+    GlTitle,
+    GlFnBtnItems
+  },
+  data() {
+    return {
+      slides: [
+        {
+          title: '氪出一个未来',
+          img: '/slide/slide4.jpg'
+        },
+        {
+          title: '肝帝强者，恐怖如斯！',
+          img: '/slide/slide5.jpg',
+          local: true,
+          href: '/about'
+        },
+        {
+          title: '我变秃了，也变强了',
+          img: '/slide/slide6.jpg'
+        },
+        {
+          title: '肝！肝！肝！',
+          img: '/slide/slide7.png'
+        }
+      ]
+    }
   }
 }
 </script>

@@ -42,6 +42,10 @@
             <gl-title>热门文章</gl-title>
             <gl-simple-list></gl-simple-list>
           </div>
+          <div class="mb-3">
+            <gl-title>热门问答排行</gl-title>
+            <gl-rank-list></gl-rank-list>
+          </div>
         </v-flex>
 
       </v-layout>
@@ -58,7 +62,8 @@ import {
   GlGridItems,
   GlArticleList,
   GlSimpleList,
-  GlEchartsItems
+  GlEchartsItems,
+  GlRankList
 } from '../components/'
 
 export default {
@@ -74,7 +79,8 @@ export default {
     GlGridItems,
     GlArticleList,
     GlSimpleList,
-    GlEchartsItems
+    GlEchartsItems,
+    GlRankList
   },
   data() {
     return {
