@@ -9,6 +9,7 @@ import GlEchartsItems from './echarts-item'
 import GlQuestionList from './question-list'
 import GlRankList from './rank-list'
 import GlFnBtnItems from './fn-btn-items'
+import GlVoteBox from './vote-box'
 
 export {
   GlSlider,
@@ -21,5 +22,6 @@ export {
   GlEchartsItems,
   GlQuestionList,
   GlRankList,
-  GlFnBtnItems
+  GlFnBtnItems,
+  GlVoteBox
 }

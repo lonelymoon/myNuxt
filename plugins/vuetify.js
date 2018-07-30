@@ -15,7 +15,8 @@ import {
   VAvatar,
   VExpansionPanel,
   VFooter,
-  VTabs
+  VTabs,
+  VRadioGroup
 } from 'vuetify'
 
 import { Ripple, Resize } from 'vuetify/es5/directives'
@@ -36,7 +37,8 @@ Vue.use(Vuetify, {
     VAvatar,
     VExpansionPanel,
     VFooter,
-    VTabs
+    VTabs,
+    VRadioGroup
   },
   directives: {
     Ripple,
