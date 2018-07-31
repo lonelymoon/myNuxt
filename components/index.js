@@ -10,6 +10,8 @@ import GlQuestionList from './question-list'
 import GlRankList from './rank-list'
 import GlFnBtnItems from './fn-btn-items'
 import GlVoteBox from './vote-box'
+import GlSteps from './steps'
+import GlItemsWithDialog from './items-with-dialog'
 
 export {
   GlSlider,
@@ -23,5 +25,7 @@ export {
   GlQuestionList,
   GlRankList,
   GlFnBtnItems,
-  GlVoteBox
+  GlVoteBox,
+  GlSteps,
+  GlItemsWithDialog
 }

@@ -4,7 +4,6 @@
     <v-layout row wrap>
       <v-flex md8 xs12 px-2 mb-3>
         <div class="blue">
-          <gl-title>问答列表展示</gl-title>
           <!--大屏显示-->
           <v-tabs right show-arrows class="hidden-xs-only">
 
@@ -40,6 +39,9 @@
       </v-flex>
       <v-flex md4 xs12 px-2>
         <v-layout row wrap>
+          <v-flex xs12 class="mb-3">
+            <gl-fn-btn-items></gl-fn-btn-items>
+          </v-flex>
           <v-flex xs12 sm6 md12 class="mb-3">
             <gl-title>热门问答排行</gl-title>
             <gl-rank-list></gl-rank-list>
@@ -63,7 +65,8 @@
 import {
   GlTitle,
   GlQuestionList,
-  GlRankList
+  GlRankList,
+  GlFnBtnItems
 } from '../../components/'
 
 export default {
@@ -73,7 +76,8 @@ export default {
   components: {
     GlTitle,
     GlQuestionList,
-    GlRankList
+    GlRankList,
+    GlFnBtnItems
   },
   data() {
     return {

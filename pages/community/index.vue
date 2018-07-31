@@ -24,6 +24,9 @@
           <gl-vote-box></gl-vote-box>
         </div>
         <div class="mb-3">
+          <gl-steps></gl-steps>
+        </div>
+        <div class="mb-3">
           <gl-echarts-items :opts="echartsOptions"></gl-echarts-items>
         </div>
         <div class="mb-3">
@@ -57,7 +60,8 @@ import {
   GlSlider,
   GlVoteBox,
   GlEchartsItems,
-  GlArticleList
+  GlArticleList,
+  GlSteps
 } from '../../components'
 
 export default {
@@ -71,7 +75,8 @@ export default {
     GlFnBtnItems,
     GlVoteBox,
     GlEchartsItems,
-    GlArticleList
+    GlArticleList,
+    GlSteps
   },
   data() {
     return {
