@@ -1,30 +1,71 @@
 <template>
-<div class="gl-items-with-dialog-wrapper">
+<div :ref="itemsName" class="gl-items-with-dialog-wrapper" v-resize="onResize">
   <v-card>
     <div class="gl-items-with-dialog pa-3">
-      <div class="gl-items-with-dialog-item px-3 mb-3" :style="itemStyles" v-for="n in 10" :key="n">
+      <div :class="itemClasses"
+           @click="show = true"
+           v-for="n in 10" :key="n">
+
         <div class="gl-items-with-dialog-item-wrapper">
           <div class="gl-items-with-dialog-item-face">
             <img src="/faces/1.jpg" class="img-block"/>
-            <div class="mt-2">游戏</div>
+            <div class="mt-3">游戏</div>
           </div>
         </div>
+
       </div>
     </div>
   </v-card>
+  <v-dialog v-model="show" width="400px" max-width="90%">
+    <v-card>
+      <div class="items-dialog-set">
+        sadasdasdasasdasdasdsad
+      </div>
+    </v-card>
+  </v-dialog>
 </div>
 </template>
 
 <script>
 export default {
   name: 'gl-items-with-dialog',
+  props: {
+    itemsName: {
+      type: String,
+      default: 'items'
+    }
+  },
   computed: {
-    itemStyles() {
+    itemClasses() {
       return {
-        minWidth: '20%',
-        maxWidth: '20%'
+        'gl-items-with-dialog-item': true,
+        'pa-3': !this.isSmall,
+        'mb-3': !this.isSmall,
+        'pa-2': this.isSmall,
+        'mb-2': this.isSmall
       }
     }
+  },
+  data() {
+    return {
+      el: null,
+      show: false,
+      isSmall: false
+    }
+  },
+  methods: {
+    onResize() {
+      setTimeout(() => {
+        let w = this.el.clientWidth
+        if (w <= 400) {
+          this.isSmall = true
+        }
+      }, 50)
+    }
+  },
+  mounted() {
+    this.el = this.$refs[this.itemsName]
+    this.onResize()
   }
 }
 </script>
@@ -47,7 +88,14 @@ export default {
   position: relative;
   height: auto;
   box-sizing: border-box;
-  flex: 1;
+  flex: 1 0 60px;
+  min-width: 20%;
   text-align: center;
+  transition: box-shadow 0.3s linear;
+}
+
+.gl-items-with-dialog-item:hover{
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
 }
 </style>
