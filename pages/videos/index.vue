@@ -4,11 +4,11 @@
     <v-layout row wrap>
       <v-flex xs12 md5 class="mb-3">
         <gl-slider keyname="videos-slide"
-            type="2" height="200"
+            type="2" height="218"
             :slides="middleSlides">
         </gl-slider>
       </v-flex>
-      <v-flex xs12 md7 class="mb-3">
+      <v-flex xs12 md7>
         <div class="gl-videos-hots">
           <gl-video-item></gl-video-item>
         </div>
@@ -46,7 +46,7 @@ export default {
         },
         {
           title: '肝！肝！肝！',
-          img: '/slide/slide7.png'
+          img: '/slide/slide8.png'
         }
       ]
     }

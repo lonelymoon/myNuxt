@@ -1,11 +1,14 @@
 <template>
   <div ref="video-items" :class="itemsClasses" v-resize="onResize">
-    <div class="gl-video-item-wrapper px-2 py-3">
-      <div class="gl-video-item px-2" :style="itemStyles" v-for="n in 8">
+    <div :class="wrapperClasses">
+      <div class="gl-video-item px-2 mb-3" :style="itemStyles" v-for="n in 8">
         <div class="gl-video-item-img">
           <img src="/medias/video1.jpg" class="img-block"/>
+          <div class="gl-video-item-img-inner">
+            asdasdsad
+          </div>
         </div>
-        <div class="gl-video-item-message">
+        <div class="gl-video-item-message" v-if="!showMessage">
           <div class="video-item-message-title">视频标题</div>
           <div class="video-item-message-content">
             <div class="float-left">播放数</div>
@@ -20,6 +23,12 @@
 <script>
 export default {
   name: 'gl-video-item',
+  props: {
+    showMessage: {
+      type: [String, Boolean],
+      default: true
+    }
+  },
   data() {
     return {
       el: null,
@@ -31,6 +40,12 @@ export default {
       return {
         'gl-video-items-wrapper': true,
         'px-3': !this.isSmall
+      }
+    },
+    wrapperClasses() {
+      return {
+        'gl-video-item-wrapper': true,
+        'px-2': !this.isSmall
       }
     },
     itemStyles() {
@@ -65,7 +80,6 @@ export default {
   height: auto;
   display: flex;
   flex-wrap: wrap;
-  background-color: #fff;
 }
 
 .gl-video-item{
@@ -75,9 +89,31 @@ export default {
   box-sizing: border-box;
 }
 
+.gl-video-item:hover{
+  cursor: pointer;
+  color: #2196F3;
+}
+
 .gl-video-item-img{
   position: relative;
   height: auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.gl-video-item-img-inner{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0,0,0,0.7);
+  transition: transform .2s ease-out;
+  transform: translateY(100%);
+}
+
+.gl-video-item:hover .gl-video-item-img-inner{
+  transform: translateY(0%);
 }
 
 .gl-video-item-img .img-block{
