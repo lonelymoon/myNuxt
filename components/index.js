@@ -12,6 +12,7 @@ import GlFnBtnItems from './fn-btn-items'
 import GlVoteBox from './vote-box'
 import GlSteps from './steps'
 import GlItemsWithDialog from './items-with-dialog'
+import GlVideoItem from './video-items'
 
 export {
   GlSlider,
@@ -27,5 +28,6 @@ export {
   GlFnBtnItems,
   GlVoteBox,
   GlSteps,
-  GlItemsWithDialog
+  GlItemsWithDialog,
+  GlVideoItem
 }
