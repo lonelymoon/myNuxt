@@ -1,5 +1,5 @@
 <template>
-<div class="gl-title-wrapper blue py-2 px-4">
+<div :class="wrapperClasses">
   {{text}}<slot v-if="!text"></slot>
 </div>
 </template>
@@ -11,6 +11,24 @@ export default {
     text: {
       type: [String, Number],
       default: ''
+    },
+    px: {
+      type: [String, Number],
+      default: 4
+    }
+  },
+  computed: {
+    wrapperClasses() {
+      let px = this.px * 1
+      return {
+        'gl-title-wrapper': true,
+        'blue': true,
+        'py-2': true,
+        'px-4': (px === 4),
+        'px-3': (px === 3),
+        'px-2': (px === 2),
+        'px-1': (px === 1)
+      }
     }
   }
 }

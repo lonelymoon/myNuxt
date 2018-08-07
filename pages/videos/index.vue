@@ -22,7 +22,10 @@
       </v-flex>
       <v-flex xs12 md3 :class="flexClass">
         <div class="gl-videos-lists pt-3">
-          <gl-video-list></gl-video-list>
+          <gl-title px="3">本周热门视频</gl-title>
+          <v-card class="px-2 py-3">
+            <gl-video-list></gl-video-list>
+          </v-card>
         </div>
       </v-flex>
     </v-layout>
@@ -34,7 +37,8 @@
 import {
   GlSlider,
   GlVideoItem,
-  GlVideoList
+  GlVideoList,
+  GlTitle
 } from '../../components'
 
 export default {
@@ -73,12 +77,13 @@ export default {
   components: {
     GlSlider,
     GlVideoItem,
-    GlVideoList
+    GlVideoList,
+    GlTitle
   },
   methods: {
     onResize() {
       let w = window.innerWidth
-      this.smallThanMD = !!(w <= 960)
+      this.smallThanMD = (w <= 960)
     }
   },
   mounted() {
