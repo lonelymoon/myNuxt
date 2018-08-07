@@ -4,12 +4,16 @@
       <div class="gl-video-item px-2 mb-3" :style="itemStyles" v-for="n in 8">
         <div class="gl-video-item-img">
           <img src="/medias/video1.jpg" class="img-block"/>
-          <div class="gl-video-item-img-inner">
-            asdasdsad
+          <div class="gl-video-item-img-inner" v-if="innerMessage">
+            <div class="video-item-img-inner-title">视频标题</div>
+            <div class="video-item-img-inner-msg">
+              <div class="float-left">用户</div>
+              <div class="float-right">播放数</div>
+            </div>
           </div>
         </div>
-        <div class="gl-video-item-message" v-if="!showMessage">
-          <div class="video-item-message-title">视频标题</div>
+        <div class="gl-video-item-message" v-if="!innerMessage">
+          <div class="video-item-message-title">视频标题视频标题视频标题视频标题视频标题视频标题视频标题视频标题视频标题</div>
           <div class="video-item-message-content">
             <div class="float-left">播放数</div>
             <div class="float-right">弹幕数</div>
@@ -24,9 +28,13 @@
 export default {
   name: 'gl-video-item',
   props: {
-    showMessage: {
+    innerMessage: {
       type: [String, Boolean],
       default: true
+    },
+    col: {
+      type: [Number, String],
+      default: 4
     }
   },
   data() {
@@ -38,8 +46,7 @@ export default {
   computed: {
     itemsClasses() {
       return {
-        'gl-video-items-wrapper': true,
-        'px-3': !this.isSmall
+        'gl-video-items-wrapper': true
       }
     },
     wrapperClasses() {
@@ -49,8 +56,10 @@ export default {
       }
     },
     itemStyles() {
+      let w = this.isSmall ? '50%' : (100 / this.col) + '%'
       return {
-        width: this.isSmall ? '50%' : '25%'
+        width: w,
+        maxWidth: w
       }
     }
   },
@@ -110,10 +119,22 @@ export default {
   background-color: rgba(0,0,0,0.7);
   transition: transform .2s ease-out;
   transform: translateY(100%);
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border-radius: 5px;
+  color: #fff;
 }
 
 .gl-video-item:hover .gl-video-item-img-inner{
   transform: translateY(0%);
+}
+
+.video-item-img-inner-msg{
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  height: auto;
 }
 
 .gl-video-item-img .img-block{
@@ -127,13 +148,20 @@ export default {
   font-size: 12px;
   height: 34px;
   overflow: hidden;
-  line-height: 1.3;
+  line-height: 1.4;
+  margin-top: 6px;
 }
 
 .video-item-message-title{
   position: relative;
-  height: auto;
+  height: 20px;
+  overflow: hidden;
   padding: 2px 0px;
+  transition: height 0.1s ease-out;
+}
+
+.gl-video-item:hover .video-item-message-title{
+  height: 34px;
 }
 
 .video-item-message-content{

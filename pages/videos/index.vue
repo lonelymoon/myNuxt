@@ -1,5 +1,5 @@
 <template>
-<section id="gl-page">
+<section id="gl-page" v-resize="onResize">
   <v-container fluid>
     <v-layout row wrap>
       <v-flex xs12 md5 class="mb-3">
@@ -8,13 +8,23 @@
             :slides="middleSlides">
         </gl-slider>
       </v-flex>
-      <v-flex xs12 md7>
+      <v-flex xs12 md7 :class="flexClass">
         <div class="gl-videos-hots">
           <gl-video-item></gl-video-item>
         </div>
       </v-flex>
-      <v-flex xs12 md9>3</v-flex>
-      <v-flex xs12 md3>4</v-flex>
+      <v-flex xs12 md9>
+        <div class="gl-videos-items pt-3">
+          <v-card class="pt-3">
+            <gl-video-item col="5" :innerMessage="false"></gl-video-item>
+          </v-card>
+        </div>
+      </v-flex>
+      <v-flex xs12 md3 :class="flexClass">
+        <div class="gl-videos-lists pt-3">
+          <gl-video-list></gl-video-list>
+        </div>
+      </v-flex>
     </v-layout>
   </v-container>
 </section>
@@ -23,12 +33,14 @@
 <script>
 import {
   GlSlider,
-  GlVideoItem
+  GlVideoItem,
+  GlVideoList
 } from '../../components'
 
 export default {
   data() {
     return {
+      smallThanMD: false,
       middleSlides: [
         {
           title: '氪出一个未来',
@@ -51,9 +63,26 @@ export default {
       ]
     }
   },
+  computed: {
+    flexClass() {
+      return {
+        'px-3': !this.smallThanMD
+      }
+    }
+  },
   components: {
     GlSlider,
-    GlVideoItem
+    GlVideoItem,
+    GlVideoList
+  },
+  methods: {
+    onResize() {
+      let w = window.innerWidth
+      this.smallThanMD = !!(w <= 960)
+    }
+  },
+  mounted() {
+    this.onResize()
   }
 }
 </script>

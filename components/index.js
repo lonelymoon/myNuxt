@@ -13,6 +13,7 @@ import GlVoteBox from './vote-box'
 import GlSteps from './steps'
 import GlItemsWithDialog from './items-with-dialog'
 import GlVideoItem from './video-items'
+import GlVideoList from './video-list'
 
 export {
   GlSlider,
@@ -29,5 +30,6 @@ export {
   GlVoteBox,
   GlSteps,
   GlItemsWithDialog,
-  GlVideoItem
+  GlVideoItem,
+  GlVideoList
 }
