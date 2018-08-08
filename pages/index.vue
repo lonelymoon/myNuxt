@@ -70,7 +70,14 @@ export default {
   head: {
     title: '首页'
   },
-  asyncData() {
+  asyncData(ctx) {
+    ctx.$axios.post('/login', {
+      data: 'world, my name is guyue'
+    }).then(function (response) {
+      console.log(response)
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   components: {
     GlSlider,

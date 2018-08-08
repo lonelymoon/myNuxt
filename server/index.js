@@ -1,4 +1,5 @@
 import Koa from 'koa'
+import {router, koaBody} from './routes'
 import { Nuxt, Builder } from 'nuxt'
 
 async function start () {
@@ -18,7 +19,16 @@ async function start () {
     const builder = new Builder(nuxt)
     await builder.build()
   }
-
+  // 路由配置
+  app.use(koaBody({
+    multipart: true,
+    formidable: {
+      maxFieldsSize: 1024 * 1024 * 5,
+      uploadDir: './temp'
+    }
+  }))
+  app.use(router.routes())
+  app.use(router.allowedMethods())
   app.use(async (ctx, next) => {
     await next()
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset

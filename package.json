@@ -16,6 +16,8 @@
     "echarts": "^4.1.0",
     "github-webhook-handler": "^0.7.1",
     "koa": "^2.4.1",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
     "node-cmd": "^3.0.0",
     "nuxt": "latest",
     "source-map-support": "^0.4.15",
