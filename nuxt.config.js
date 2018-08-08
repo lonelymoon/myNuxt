@@ -36,6 +36,16 @@ module.exports = {
     '~/plugins/echarts.js'
   ],
   /*
+  ** modules
+  */
+  modules: [
+    '@nuxtjs/axios'
+  ],
+  axios: {
+    prefix: '/api/',
+    proxy: false
+  },
+  /*
   ** transition
   */
   transition: {

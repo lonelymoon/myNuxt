@@ -12,7 +12,7 @@
             <v-tab>已回答</v-tab>
             <v-tab>热门回答</v-tab>
 
-            <v-tab-item v-for="n in 4">
+            <v-tab-item v-for="n in 4" :key="n">
               <v-card><v-divider></v-divider></v-card>
               <gl-question-list v-for="(list, index) in lists" :list="list" :key="list.question.qid">
               </gl-question-list>
