@@ -39,11 +39,17 @@ module.exports = {
   ** modules
   */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   axios: {
     prefix: '/api/',
-    proxy: false
+    proxy: true
+  },
+  proxy: {
+    '/api/': {
+      target: 'http://localhost'
+    }
   },
   /*
   ** transition
