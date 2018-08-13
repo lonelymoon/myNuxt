@@ -4,7 +4,6 @@
 
   // 登录
   router.post('/api/login', function (ctx, next) {
-    next()
     let {data} = ctx.request.body
     ctx.body = 'hello, ' + data
   })

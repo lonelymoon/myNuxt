@@ -27,6 +27,8 @@ async function start () {
       uploadDir: './temp'
     }
   }))
+  app.use(router.routes())
+  app.use(router.allowedMethods())
   app.use(async (ctx, next) => {
     await next()
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
@@ -39,8 +41,6 @@ async function start () {
       })
     })
   })
-  app.use(router.routes())
-  app.use(router.allowedMethods())
 
   app.listen(port, host)
   console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console
