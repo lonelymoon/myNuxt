@@ -1,5 +1,7 @@
 const nodeExternals = require('webpack-node-externals')
 
+const isProd = Object.is(process.env.NODE_ENV, 'production')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -44,7 +46,7 @@ module.exports = {
   ],
   axios: {
     prefix: '/api/',
-    proxy: true
+    proxy: isProd
   },
   proxy: {
     '/api/': {

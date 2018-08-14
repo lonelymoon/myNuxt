@@ -1,27 +1,14 @@
-# nuxt-web
+# GameLife
 
-> just do it
+技术栈以及工具介绍
+* 前端框架：vue-nuxt
+* vue组件库：vuetify
+* 字体图标库：font awesome
+* 插件：axios, echarts
+* 服务端框架：koa2(中间件：koa-router,koa-body)
+* 进程管理工具：pm2
+* 反向代理工具：nginx
+* guthub自动部署 webhook
+* restful API文档生成工具：apidoc
 
-## Build Setup
-
-``` bash
-# install dependencies
-$ npm install # Or yarn install*[see note below]
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm start
-
-# generate static project
-$ npm run generate
-```
-
-*Note: Due to a bug in yarn's engine version detection code if you are
-using a prerelease version of Node (i.e. v7.6.0-rc.1) you will need to either:
-  1. Use `npm install`
-  2. Run `yarn` with a standard release of Node and then switch back
-
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+项目地址：[demo](http://132.232.28.95)

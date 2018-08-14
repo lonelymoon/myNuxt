@@ -19,5 +19,8 @@ build
 # webhook
 webhook.js
 
+# resources
+static/resources
+
 # workspace
 workspace.xml

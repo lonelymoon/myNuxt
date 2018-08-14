@@ -1,0 +1,13 @@
+{
+  "name": "gamelife",
+  "version": "1.0.0",
+  "description": "gamelife项目API接口文档",
+  "title": "gamelife API",
+  "url": "",
+  "simpleUrl": "",
+  "forceLanguage": "zh-cn",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  }
+}
