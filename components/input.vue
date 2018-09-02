@@ -52,8 +52,13 @@ export default {
       default: ''
     },
     showError: {
-      type: [String, Boolean],
-      default: false
+      type: Object,
+      default: () => {
+        return {
+          status: true,
+          value: ''
+        }
+      }
     }
   },
   data() {
@@ -91,6 +96,7 @@ export default {
       this.msg = this.errorMsg
       this[methodStr] && this[methodStr](value)
     },
+    // 检测邮箱格式
     checkEmail(text) {
       let reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
       this.warning = !reg.test(text)
@@ -98,7 +104,7 @@ export default {
   },
   watch: {
     showError() {
-      this.warning = this.showError === 'false' ? false : !!this.showError
+      this.warning = !this.showError.status
     },
     value() {
       this.currentValue = this.value
@@ -106,6 +112,9 @@ export default {
     currentValue() {
       this.$emit('input', this.currentValue)
       this.checkType(this.currentValue)
+    },
+    warning() {
+      this.$emit('error', this.warning)
     }
   }
 }
@@ -132,6 +141,10 @@ export default {
   box-sizing: border-box;
   padding: 0px 18px 0px 0px;
   font-size: 14px;
+}
+
+.gl-input-withText .gl-input-text{
+  display: none;
 }
 
 .gl-input-box{

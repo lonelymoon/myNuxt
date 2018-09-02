@@ -1,38 +1,67 @@
 <template>
 <section id="gl-page">
-  <v-container fluid class="gl-page-container">
+  <v-container fluid class="gl-page-container px-2 py-5">
     <v-layout row wrap>
-      <v-flex sm6 xs12 class="px-2">
+      <v-flex sm6 xs12 :class="flexClasses" v-resize="onResize">
         <v-card class="py-3 px-3">
           <div class="input-header mb-3 pb-3">
             登录/Login
           </div>
           <div class="input-item">
-            <gl-input type="text" v-model="account" text="账号" placeholder="用户名/邮箱/手机号"></gl-input>
+            <gl-input type="text"
+                      v-model="account_login"
+                      text="账号"
+                      placeholder="用户名/邮箱/手机号"
+                      min="6"
+                      @error="canLogin">
+            </gl-input>
           </div>
           <div class="input-item">
-            <gl-input type="password" v-model="password" text="密码" min="6"></gl-input>
+            <gl-input type="password"
+                      v-model="password_login"
+                      text="密码"
+                      min="6"
+                      @error="canLogin">
+            </gl-input>
           </div>
-          <v-btn color="blue" dark depressed block>登录</v-btn>
+          <v-btn color="blue" dark depressed block @click="login">登录</v-btn>
         </v-card>
       </v-flex>
-      <v-flex sm6 xs12 class="px-2">
+      <v-flex sm6 xs12 :class="flexClasses">
         <v-card class="py-3 px-3">
           <div class="input-header mb-3 pb-3">
             注册/Register
           </div>
           <div class="register-way">
             <div class="input-item">
-              <gl-input type="text" check="email" v-model="account" text="邮箱" placeholder="邮箱"></gl-input>
+              <gl-input type="text"
+                        check="email"
+                        v-model="account_register"
+                        text="邮箱"
+                        placeholder="邮箱"
+                        errorMsg="请填写正确的邮箱地址"
+                        @error="canRegister">
+              </gl-input>
             </div>
             <div class="input-item">
-              <gl-input type="password" v-model="password" text="密码" min="6"></gl-input>
+              <gl-input type="password"
+                        v-model="password_register"
+                        text="密码"
+                        min="6"
+                        @error="canRegister">
+              </gl-input>
             </div>
             <div class="input-item">
-              <gl-input type="password" v-model="comfirm" text="确认密码" errorMsg=""></gl-input>
+              <gl-input type="password"
+                        v-model="confirm"
+                        text="确认密码"
+                        errorMsg="两次输入密码不一致"
+                        :showError="passwordPass"
+              >
+              </gl-input>
             </div>
           </div>
-          <v-btn color="blue" dark depressed block>注册</v-btn>
+          <v-btn color="blue" dark depressed block @click="register">注册</v-btn>
         </v-card>
       </v-flex>
     </v-layout>
@@ -50,9 +79,94 @@ export default {
   },
   data() {
     return {
-      account: '',
-      password: '',
-      comfirm: ''
+      isMobile: false,
+      account_login: '',
+      password_login: '',
+      account_register: '',
+      password_register: '',
+      confirm: '',
+      passwordPass: { status: true, value: this.confirm },
+      loginCheckNum: 0,
+      registerCheckNum: 0
+    }
+  },
+  computed: {
+    flexClasses() {
+      return {
+        'px-2': !this.isMobile
+      }
+    }
+  },
+  methods: {
+    onResize() {
+      let w = window.innerWidth
+      this.isMobile = (w <= 500)
+    },
+    login() {
+      if (!this.loginCheck()) {
+        alert('填写格式有误')
+        return false
+      }
+
+      this.$axios.post('/login', {
+        account: this.account_login,
+        password: this.password_login
+      }).then((res) => {
+        console.log(res)
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    loginCheck() {
+      let account = this.account_login.replace(/\s+/g, '')
+      let password = this.password_login.replace(/\s+/g, '')
+      if (this.loginCheckNum !== 0 || account.length === 0 || password.length === 0) {
+        return false
+      }
+      return true
+    },
+    register() {
+      if (!this.registerCheck()) {
+        alert('填写格式有误')
+        return false
+      }
+
+      this.$axios.post('/register', {
+        account: this.account_register,
+        password: this.password_register
+      }).then((res) => {
+        console.log(res)
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    registerCheck() {
+      let account = this.account_register.replace(/\s+/g, '')
+      let password = this.password_register.replace(/\s+/g, '')
+      if (this.loginCheckNum !== 0 || account.length === 0 || password.length === 0 || !this.passwordPass) {
+        return false
+      }
+      return true
+    },
+    canLogin(value) {
+      value ? this.loginCheckNum++ : this.loginCheckNum--
+    },
+    canRegister(value) {
+      value ? this.registerCheckNum++ : this.registerCheckNum--
+    }
+  },
+  watch: {
+    password_register() {
+      this.passwordPass = {
+        status: this.confirm === this.password_register,
+        value: this.confirm
+      }
+    },
+    confirm() {
+      this.passwordPass = {
+        status: this.confirm === this.password_register,
+        value: this.confirm
+      }
     }
   }
 }
