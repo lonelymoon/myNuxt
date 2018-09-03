@@ -2,7 +2,12 @@
 <section id="gl-page">
   <v-container fluid class="gl-page-container px-2 py-5">
     <v-layout row wrap>
-      <v-flex sm6 xs12 :class="flexClasses" v-resize="onResize">
+      <v-flex xs12 v-if="isMobile" class="pb-3">
+        <div class="gl-input-title">
+          {{activeStatus === 'login' ? '登录Gamelife' : '注册Gamelife'}}
+        </div>
+      </v-flex>
+      <v-flex sm6 xs12 :class="flexClasses" v-resize="onResize" v-show="showLogin">
         <v-card class="py-3 px-3">
           <div class="input-header mb-3 pb-3">
             登录/Login
@@ -25,9 +30,13 @@
             </gl-input>
           </div>
           <v-btn color="blue" dark depressed block @click="login">登录</v-btn>
+          <div class="gl-input-change-box py-2" v-if="isMobile">
+            <div class="gl-input-change-left" @click="activeStatus = 'register'">没有账号？点此注册</div>
+            <div class="gl-input-change-right">忘记密码？</div>
+          </div>
         </v-card>
       </v-flex>
-      <v-flex sm6 xs12 :class="flexClasses">
+      <v-flex sm6 xs12 :class="flexClasses" v-show="showRegister">
         <v-card class="py-3 px-3">
           <div class="input-header mb-3 pb-3">
             注册/Register
@@ -62,6 +71,10 @@
             </div>
           </div>
           <v-btn color="blue" dark depressed block @click="register">注册</v-btn>
+          <div class="gl-input-change-box py-2" v-if="isMobile">
+            <div class="gl-input-change-left" @click="activeStatus = 'login'">没有账号？点此注册</div>
+            <div class="gl-input-change-right">忘记密码？</div>
+          </div>
         </v-card>
       </v-flex>
     </v-layout>
@@ -87,7 +100,8 @@ export default {
       confirm: '',
       passwordPass: { status: true, value: this.confirm },
       loginCheckNum: 0,
-      registerCheckNum: 0
+      registerCheckNum: 0,
+      activeStatus: 'login'
     }
   },
   computed: {
@@ -95,6 +109,12 @@ export default {
       return {
         'px-2': !this.isMobile
       }
+    },
+    showLogin() {
+      return !this.isMobile || (this.isMobile && this.activeStatus === 'login')
+    },
+    showRegister() {
+      return !this.isMobile || (this.isMobile && this.activeStatus === 'register')
     }
   },
   methods: {
@@ -179,6 +199,13 @@ export default {
   z-index: 1;
 }
 
+.gl-input-title{
+  position: relative;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+}
+
 .login-bg{
   position: absolute;
   left: 0px;
@@ -205,5 +232,32 @@ export default {
   position: relative;
   height: auto;
   margin-bottom: 16px;
+}
+
+.gl-input-change-box{
+  position: relative;
+  height: auto;
+  font-size: 12px;
+  color: #2196F3;
+}
+
+.gl-input-change-box:after{
+  clear: both;
+  display: block;
+  content: "";
+}
+
+.gl-input-change-left{
+  float: left;
+  cursor: pointer;
+}
+
+.gl-input-change-right{
+  float: right;
+}
+
+.gl-input-change-left:hover,.gl-input-change-right:hover{
+  cursor: pointer;
+  opacity: 0.9;
 }
 </style>
