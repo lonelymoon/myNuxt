@@ -46,11 +46,11 @@ module.exports = {
   ],
   axios: {
     prefix: '/api/',
-    proxy: isProd
+    proxy: true
   },
   proxy: {
-    '/api/': {
-      target: 'http://localhost'
+    '/api': {
+      target: isProd ? 'http://127.0.0.1' : 'http://127.0.0.1:3000'
     }
   },
   /*
