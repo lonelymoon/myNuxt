@@ -50,7 +50,7 @@ module.exports = {
   },
   proxy: {
     '/api': {
-      target: isProd ? 'http://127.0.0.1' : 'http://127.0.0.1:3000'
+      target: isProd ? 'http://localhost' : 'http://localhost:3000'
     }
   },
   /*
