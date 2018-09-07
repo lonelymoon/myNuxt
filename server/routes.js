@@ -1,6 +1,7 @@
 (function () {
   const router = require('koa-router')()
   const koaBody = require('koa-body')
+  const handle = require('./dbHandle')
 
   /**
    * 登录
@@ -77,11 +78,21 @@
    * @apiSampleRequest /api/register/
    * @apiVersion 1.0.0
    */
-  router.post('/api/register', function (ctx) {
+  router.post('/api/register', async function (ctx) {
     let {account, password} = ctx.request.body
-    ctx.body = {
-      result: {
-        account, password
+    let users = handle.users
+    try {
+      let results = await users.addOneUser(`'${account}','${password}'`, `email = '${account}'`)
+      ctx.body = {
+        'success': true,
+        'msg': '插入成功',
+        'result': results
+      }
+    } catch (err) {
+      ctx.body = {
+        'success': false,
+        'msg': '插入失败',
+        'error': err
       }
     }
   })

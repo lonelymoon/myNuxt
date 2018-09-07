@@ -14,11 +14,6 @@ async function start () {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)
 
-  // Build in development
-  if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
-  }
   // 路由配置
   app.use(koaBody({
     multipart: true,
@@ -29,6 +24,11 @@ async function start () {
   }))
   app.use(router.routes())
   app.use(router.allowedMethods())
+  // Build in development
+  if (config.dev) {
+    const builder = new Builder(nuxt)
+    await builder.build()
+  }
   app.use(async (ctx, next) => {
     await next()
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
