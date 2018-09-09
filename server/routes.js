@@ -2,6 +2,7 @@
   const router = require('koa-router')()
   const koaBody = require('koa-body')
   const handle = require('./dbHandle')
+  const md5 = require('md5')
 
   /**
    * 登录
@@ -36,11 +37,32 @@
    * @apiSampleRequest /api/login/
    * @apiVersion 1.0.0
    */
-  router.post('/api/login', function (ctx) {
+  router.post('/api/login', async function (ctx) {
     let {account, password} = ctx.request.body
-    ctx.body = {
-      result: {
-        account, password
+    try {
+      let results = await handle.users.login(`email = '${account}' and password = '${md5(password)}'`)
+      if (results[0].length > 0) {
+        ctx.body = {
+          'success': true,
+          'msg': '登录成功',
+          'result': results[0]
+        }
+      } else {
+        ctx.body = {
+          'success': false,
+          'msg': '登录失败',
+          'error': {
+            'code': 1,
+            'errorMsg': '账号密码不匹配',
+            'log': null
+          }
+        }
+      }
+    } catch (err) {
+      ctx.body = {
+        'success': false,
+        'msg': '登录失败',
+        'error': err
       }
     }
   })
@@ -82,7 +104,7 @@
     let {account, password} = ctx.request.body
     let users = handle.users
     try {
-      let results = await users.addOneUser(`'${account}','${password}'`, `email = '${account}'`)
+      let results = await users.addOneUser(`'${account}','${md5(password)}'`, `email = '${account}'`)
       ctx.body = {
         'success': true,
         'msg': '插入成功',

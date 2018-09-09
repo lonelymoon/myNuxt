@@ -5,6 +5,7 @@ class Mysql {
     this.connection = mysql.createConnection({
       host, user, password, database, port
     })
+    this.results = null
     this.connect()
   }
   // 链接数据库

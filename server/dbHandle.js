@@ -53,6 +53,18 @@ const users = {
         err ? reject(err) : resolve([rows, fields])
       })
     })
+  },
+  // 登录
+  login(condition) {
+    return addPromise((resolve, reject) => {
+      mysql.select('user', (err, results, fields) => {
+        err ? reject({
+          'code': 1000,
+          'errorMsg': '用户查询语句错误',
+          'log': err
+        }) : resolve([results, fields])
+      }, condition)
+    })
   }
 }
 
