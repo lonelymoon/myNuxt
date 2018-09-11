@@ -132,6 +132,7 @@
         expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
         overwrite: true
       })
+      console.log(ctx.cookies)
       ctx.body = {
         'success': true,
         'msg': '插入成功',
