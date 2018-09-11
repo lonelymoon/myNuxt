@@ -5,6 +5,9 @@
   const md5 = require('md5')
   const crypto = require('crypto')
 
+  const isProd = Object.is(process.env.NODE_ENV, 'production')
+  let domain = isProd ? 'http://132.232.28.95' : 'localhost'
+
   function jiami(str, secret) {
     let cipher = crypto.createCipher('aes192', secret)
     let enc = cipher.update(str, 'utf8', 'hex')
@@ -51,7 +54,7 @@
       if (results[0].length > 0) {
         // 设置cookies
         ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
-          domain: 'localhost',
+          domain: domain,
           path: '/',
           httpOnly: false,
           maxAge: 7 * 24 * 60 * 60 * 1000,
@@ -126,7 +129,7 @@
       await users.addOneUser(`'${account}','${md5(password)}'`, `email = '${account}'`)
       let results = await users.login(`email = '${account}' and password = '${md5(password)}'`)
       ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
-        domain: 'localhost',
+        domain: domain,
         path: '/',
         httpOnly: false,
         maxAge: 7 * 24 * 60 * 60 * 1000,
