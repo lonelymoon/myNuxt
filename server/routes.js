@@ -49,12 +49,6 @@
     try {
       let results = await handle.users.login(`email = '${account}' and password = '${md5(password)}'`)
       if (results[0].length > 0) {
-        // 返回数据
-        ctx.body = {
-          'success': true,
-          'msg': '登录成功',
-          'result': results[0]
-        }
         // 设置cookies
         ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
           domain: 'localhost',
@@ -64,6 +58,12 @@
           expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
           overwrite: true
         })
+        // 返回数据
+        ctx.body = {
+          'success': true,
+          'msg': '登录成功',
+          'result': results[0]
+        }
       } else {
         ctx.body = {
           'success': false,
@@ -124,11 +124,6 @@
     try {
       await users.addOneUser(`'${account}','${md5(password)}'`, `email = '${account}'`)
       let results = await users.login(`email = '${account}' and password = '${md5(password)}'`)
-      ctx.body = {
-        'success': true,
-        'msg': '插入成功',
-        'result': results
-      }
       ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
         domain: 'localhost',
         path: '/',
@@ -137,6 +132,11 @@
         expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
         overwrite: true
       })
+      ctx.body = {
+        'success': true,
+        'msg': '插入成功',
+        'result': results
+      }
     } catch (err) {
       ctx.body = {
         'success': false,

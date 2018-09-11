@@ -9,7 +9,6 @@ function jiemi(str, secret) {
 
 export default {
   getUserInfo(state) {
-    console.log(state)
     return JSON.parse(jiemi(state.user, 'gamelife'))
   }
 }
