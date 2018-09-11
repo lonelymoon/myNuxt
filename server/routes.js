@@ -6,7 +6,7 @@
   const crypto = require('crypto')
 
   const isProd = Object.is(process.env.NODE_ENV, 'production')
-  let domain = isProd ? 'http://132.232.28.95' : 'localhost'
+  let domain = isProd ? '132.232.28.95' : 'localhost'
 
   function jiami(str, secret) {
     let cipher = crypto.createCipher('aes192', secret)
@@ -61,12 +61,12 @@
           expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
           overwrite: true
         })
+        console.log(ctx.cookies.get('user'))
         // 返回数据
         ctx.body = {
           'success': true,
           'msg': '登录成功',
-          'result': results[0],
-          'cookies': ctx.cookies.get('user')
+          'result': results[0]
         }
       } else {
         ctx.body = {
