@@ -3,7 +3,14 @@
   const koaBody = require('koa-body')
   const handle = require('./dbHandle')
   const md5 = require('md5')
+  const crypto = require('crypto')
 
+  function jiami(str, secret) {
+    let cipher = crypto.createCipher('aes192', secret)
+    let enc = cipher.update(str, 'utf8', 'hex')
+    enc += cipher.final('hex')
+    return enc
+  }
   /**
    * 登录
    * @api {POST} /api/login 登录验证
@@ -42,11 +49,21 @@
     try {
       let results = await handle.users.login(`email = '${account}' and password = '${md5(password)}'`)
       if (results[0].length > 0) {
+        // 返回数据
         ctx.body = {
           'success': true,
           'msg': '登录成功',
           'result': results[0]
         }
+        // 设置cookies
+        ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
+          domain: 'localhost',
+          path: '/',
+          httpOnly: false,
+          maxAge: 7 * 24 * 60 * 60 * 1000,
+          expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
+          overwrite: true
+        })
       } else {
         ctx.body = {
           'success': false,
@@ -59,6 +76,7 @@
         }
       }
     } catch (err) {
+      console.log(err)
       ctx.body = {
         'success': false,
         'msg': '登录失败',
@@ -104,12 +122,21 @@
     let {account, password} = ctx.request.body
     let users = handle.users
     try {
-      let results = await users.addOneUser(`'${account}','${md5(password)}'`, `email = '${account}'`)
+      await users.addOneUser(`'${account}','${md5(password)}'`, `email = '${account}'`)
+      let results = await users.login(`email = '${account}' and password = '${md5(password)}'`)
       ctx.body = {
         'success': true,
         'msg': '插入成功',
         'result': results
       }
+      ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
+        domain: 'localhost',
+        path: '/',
+        httpOnly: false,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
+        overwrite: true
+      })
     } catch (err) {
       ctx.body = {
         'success': false,

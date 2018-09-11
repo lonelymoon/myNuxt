@@ -90,6 +90,9 @@ export default {
   components: {
     GlInput
   },
+  asyncData(app) {
+    // console.log(app)
+  },
   data() {
     return {
       isMobile: false,
@@ -133,6 +136,8 @@ export default {
         password: this.password_login
       }).then((res) => {
         console.log(res)
+        this.$store.commit('saveCookies')
+        console.log(this.$store.getters.getUserInfo)
       }).catch((error) => {
         console.log(error)
       })
@@ -156,6 +161,8 @@ export default {
         password: this.password_register
       }).then((res) => {
         console.log(res)
+        this.$store.commit('saveCookies')
+        console.log(this.$store.getters.getUserInfo)
       }).catch((error) => {
         console.log(error)
       })
@@ -163,7 +170,7 @@ export default {
     registerCheck() {
       let account = this.account_register.replace(/\s+/g, '')
       let password = this.password_register.replace(/\s+/g, '')
-      if (this.loginCheckNum !== 0 || account.length === 0 || password.length === 0 || !this.passwordPass) {
+      if (this.registerCheckNum !== 0 || account.length === 0 || password.length === 0 || !this.passwordPass) {
         return false
       }
       return true
@@ -188,7 +195,8 @@ export default {
         value: this.confirm
       }
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 

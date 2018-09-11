@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "cross-env": "^5.0.1",
+    "crypto": "^1.0.1",
     "echarts": "^4.1.0",
     "github-webhook-handler": "^0.7.1",
+    "js-cookie": "^2.2.0",
     "koa": "^2.4.1",
     "koa-body": "^4.0.4",
     "koa-router": "^7.4.0",

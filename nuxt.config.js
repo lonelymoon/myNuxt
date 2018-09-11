@@ -1,7 +1,7 @@
 const nodeExternals = require('webpack-node-externals')
 
 const isProd = Object.is(process.env.NODE_ENV, 'production')
-console.log(isProd)
+
 module.exports = {
   /*
   ** Headers of the page

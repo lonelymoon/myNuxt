@@ -1,20 +1,43 @@
 const mysql = require('mysql')
 
+function getConnection(fn) {
+  return new Promise((resolve, reject) => {
+    fn(resolve, reject)
+  })
+}
+
 class Mysql {
   constructor(user, password, database, host = 'localhost', port = '3306') {
-    this.connection = mysql.createConnection({
+    this.pool = mysql.createPool({
       host, user, password, database, port
     })
     this.results = null
     this.connect()
   }
   // 链接数据库
-  connect() {
-    this.connection.connect()
+  async connect() {
+    let connection = null
+    let pool = this.pool
+    let connect = this.connect
+    try {
+      connection = await getConnection((resolve, reject) => {
+        pool.getConnection((err, connection) => {
+          if (err) {
+            reject(err)
+          } else {
+            resolve(connection)
+          }
+        })
+      })
+    } catch (err) {
+      console.log('数据库连接错误')
+      connect()
+    }
+    this.connection = connection
   }
   // 关闭数据库连接
   close() {
-    this.connection.end()
+    this.pool.end()
   }
   // delete
   delete(table, condition, callback = function () {}, fake) {
@@ -30,12 +53,14 @@ class Mysql {
   }
   // query语句
   query(sql, callback = function () {}) {
+    this.connect()
     this.connection.query(sql, (err, rows, fields) => {
       if (!err) {
         this.results = rows
       }
       callback(err, rows, fields)
     })
+    this.connection.release()
   }
   // select
   select(table, callback = function () {}, condition, columns = '*') {
