@@ -162,7 +162,7 @@ export default {
       }).then((res) => {
         console.log(res)
         this.$store.commit('saveCookies')
-        console.log(this.$store.getters.getUserInfo)
+        // console.log(this.$store.getters.getUserInfo)
       }).catch((error) => {
         console.log(error)
       })

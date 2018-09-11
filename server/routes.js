@@ -58,11 +58,13 @@
           expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
           overwrite: true
         })
+        console.log('cookie:' + ctx.cookies)
         // 返回数据
         ctx.body = {
           'success': true,
           'msg': '登录成功',
-          'result': results[0]
+          'result': results[0],
+          'cookies': ctx.cookies
         }
       } else {
         ctx.body = {
@@ -132,12 +134,10 @@
         expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
         overwrite: true
       })
-      console.log('cookie:' + ctx.cookies)
       ctx.body = {
         'success': true,
         'msg': '插入成功',
-        'result': results,
-        'cookies': ctx.cookies
+        'result': results
       }
     } catch (err) {
       ctx.body = {
