@@ -9,7 +9,12 @@ function getConnection(fn) {
 class Mysql {
   constructor(user, password, database, host = 'localhost', port = '3306') {
     this.pool = mysql.createPool({
-      host, user, password, database, port
+      host,
+      user,
+      password,
+      database,
+      port,
+      acquireTimeout: 20000
     })
     this.results = null
     this.connect()
@@ -52,8 +57,8 @@ class Mysql {
     this.query('insert into ' + table + '(' + columns + ') values(' + values + ')', callback)
   }
   // query语句
-  query(sql, callback = function () {}) {
-    this.connect()
+  async query(sql, callback = function () {}) {
+    await this.connect()
     this.connection.query(sql, (err, rows, fields) => {
       if (!err) {
         this.results = rows
