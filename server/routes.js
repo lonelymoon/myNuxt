@@ -61,7 +61,6 @@
           expires: new Date().getDate() + 7 * 24 * 60 * 60 * 1000,
           overwrite: true
         })
-        console.log(ctx.cookies.get('user'))
         // 返回数据
         ctx.body = {
           'success': true,
