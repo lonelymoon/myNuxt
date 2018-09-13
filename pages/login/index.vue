@@ -142,6 +142,9 @@ export default {
           return false
         }
         this.$store.commit('saveCookies')
+        this.$router.push({
+          path: '/'
+        })
       }).catch((error) => {
         console.log(error)
       })

@@ -1,5 +1,66 @@
 define({ "api": [
   {
+    "type": "GET",
+    "url": "/api/user/{paramId}",
+    "title": "获取用户信息",
+    "description": "<p>获取对应用户数据</p>",
+    "group": "User",
+    "name": "getUserInfo",
+    "parameter": {
+      "fields": {
+        "参数": [
+          {
+            "group": "参数",
+            "type": "Number",
+            "optional": true,
+            "field": "page",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "参数",
+            "type": "Number",
+            "optional": true,
+            "field": "perpage",
+            "description": "<p>每页条数</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式:",
+          "content": "/36571536830398454973374?page=1&perpage=10",
+          "type": "String"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "正确返回值:",
+          "content": "{\n   \"success\": true,\n   \"msg\": \"获取用户信息成功\",\n   \"result\": {}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "错误返回值:",
+          "content": "{\n   \"success\": false,\n   \"msg\": \"获取用户信息失败\",\n   \"error\": {\n     \"code\": 1,\n     \"errorMsg\": \"用户不存在\"\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "/api/user/36571536830398454973374"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "server/routes.js",
+    "groupTitle": "User"
+  },
+  {
     "type": "POST",
     "url": "/api/login",
     "title": "登录验证",

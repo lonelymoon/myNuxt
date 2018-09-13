@@ -149,5 +149,50 @@
     }
   })
 
+  /**
+   * 获取单个用户信息
+   * @api {GET} /api/user/{paramId} 获取用户信息
+   * @apiDescription 获取对应用户数据
+   * @apiGroup User
+   * @apiName getUserInfo
+   *
+   * @apiParam (参数) {Number} [page] 页数
+   * @apiParam (参数) {Number} [perpage] 每页条数
+   *
+   * @apiParamExample {String} 请求参数格式:
+   *    /36571536830398454973374?page=1&perpage=10
+   *
+   * @apiSuccessExample {json} 正确返回值:
+   * {
+   *    "success": true,
+   *    "msg": "获取用户信息成功",
+   *    "result": {}
+   * }
+   *
+   * @apiErrorExample {json} 错误返回值:
+   * {
+   *    "success": false,
+   *    "msg": "获取用户信息失败",
+   *    "error": {
+   *      "code": 1,
+   *      "errorMsg": "用户不存在"
+   *    }
+   * }
+   *
+   * @apiSampleRequest /api/user/36571536830398454973374
+   * @apiVersion 1.0.0
+   */
+  router.get('/api/user/:paramId', function (ctx) {
+    let params = ctx.params
+    let query = ctx.query
+    ctx.body = {
+      'success': true,
+      'msg': '获取用户信息成功',
+      'result': {
+        params, query
+      }
+    }
+  })
+
   module.exports = { koaBody, router }
 })()

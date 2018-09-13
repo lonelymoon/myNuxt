@@ -224,7 +224,6 @@ export default {
   methods: {
     ...mapMutations(['saveCookies'])
   },
-  middleware: 'auth',
   beforeMount() {
     this.saveCookies()
   }
