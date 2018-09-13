@@ -136,8 +136,12 @@ export default {
         password: this.password_login
       }).then((res) => {
         console.log(res)
+        let data = res.data
+        if (data.error) {
+          alert(data.error.errorMsg)
+          return false
+        }
         this.$store.commit('saveCookies')
-        console.log(this.$store.getters.getUserInfo)
       }).catch((error) => {
         console.log(error)
       })
@@ -161,8 +165,16 @@ export default {
         password: this.password_register
       }).then((res) => {
         console.log(res)
+        let data = res.data
+        if (data.error) {
+          alert(data.error.errorMsg)
+          return false
+        }
+        let user = res.data.result[0][0]
         this.$store.commit('saveCookies')
-        console.log(this.$store.getters.getUserInfo)
+        this.$router.push({
+          path: '/user/' + user.paramId
+        })
       }).catch((error) => {
         console.log(error)
       })

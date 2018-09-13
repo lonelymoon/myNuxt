@@ -37,6 +37,9 @@ module.exports = {
     '~/plugins/swiper.js',
     '~/plugins/echarts.js'
   ],
+  /* router: {
+    middleware: 'auth'
+  }, */
   /*
   ** modules
   */

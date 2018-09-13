@@ -34,8 +34,9 @@ class Mysql {
           }
         })
       })
+      console.log('数据库连接成功')
     } catch (err) {
-      console.log('数据库连接错误')
+      console.log('数据库连接错误，重连中...')
       connect()
     }
     this.connection = connection

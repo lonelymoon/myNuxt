@@ -50,7 +50,7 @@
   router.post('/api/login', async function (ctx) {
     let {account, password} = ctx.request.body
     try {
-      let results = await handle.users.login(`email = '${account}' and password = '${md5(password)}'`)
+      let results = await handle.users.login('email', [account, md5(password)])
       if (results[0].length > 0) {
         // 设置cookies
         ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
@@ -125,8 +125,8 @@
     let {account, password} = ctx.request.body
     let users = handle.users
     try {
-      await users.addOneUser(`'${account}','${md5(password)}'`, `email = '${account}'`)
-      let results = await users.login(`email = '${account}' and password = '${md5(password)}'`)
+      await users.addOneUser('email', [account, md5(password)])
+      let results = await users.login('email', [account, md5(password)])
       ctx.cookies.set('user', jiami(JSON.stringify(results[0][0]), 'gamelife'), {
         domain: domain,
         path: '/',

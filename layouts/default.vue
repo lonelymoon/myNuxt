@@ -109,59 +109,14 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations } from 'vuex'
 
 export default {
   components: {},
   data() {
     return {
       navToggle: false,
-      routes: [
-        {
-          link: '/',
-          icon: 'home',
-          text: '首页'
-        },
-        {
-          link: '/community',
-          icon: 'group',
-          text: '社区'
-        },
-        {
-          link: '/question',
-          icon: 'question_answer',
-          text: '问答'
-        },
-        {
-          link: '/guides',
-          icon: 'fas fa-gamepad',
-          text: '攻略'
-        },
-        {
-          link: '/videos',
-          icon: 'fas fa-video',
-          text: '视频'
-        },
-        {
-          link: '/charts',
-          icon: 'fas fa-chart-line',
-          text: '图表数据'
-        },
-        {
-          link: '/about',
-          icon: 'fas fa-user-secret',
-          text: '关于我们'
-        },
-        {
-          link: '/know',
-          icon: 'home',
-          text: '知识点'
-        },
-        {
-          link: '/login',
-          icon: 'fas fa-sign-in-alt',
-          text: '注册/登录'
-        }
-      ],
+      ...mapState(['user']),
       footer: {
         partner: {
           title: '合作伙伴',
@@ -208,6 +163,70 @@ export default {
         }
       }
     }
+  },
+  computed: {
+    routes() {
+      let last = this.getUserInfo ? {
+        link: '/user/' + this.getUserInfo.paramId,
+        icon: 'fas fa-user-cog',
+        text: '个人中心'
+      } : {
+        link: '/login',
+        icon: 'fas fa-sign-in-alt',
+        text: '注册/登录'
+      }
+      return [
+        {
+          link: '/',
+          icon: 'home',
+          text: '首页'
+        },
+        {
+          link: '/community',
+          icon: 'group',
+          text: '社区'
+        },
+        {
+          link: '/question',
+          icon: 'question_answer',
+          text: '问答'
+        },
+        {
+          link: '/guides',
+          icon: 'fas fa-gamepad',
+          text: '攻略'
+        },
+        {
+          link: '/videos',
+          icon: 'fas fa-video',
+          text: '视频'
+        },
+        {
+          link: '/charts',
+          icon: 'fas fa-chart-line',
+          text: '图表数据'
+        },
+        {
+          link: '/about',
+          icon: 'fas fa-user-secret',
+          text: '关于我们'
+        },
+        {
+          link: '/know',
+          icon: 'home',
+          text: '知识点'
+        },
+        last
+      ]
+    },
+    ...mapGetters(['getUserInfo'])
+  },
+  methods: {
+    ...mapMutations(['saveCookies'])
+  },
+  middleware: 'auth',
+  beforeMount() {
+    this.saveCookies()
   }
 }
 </script>
