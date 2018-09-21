@@ -4,6 +4,7 @@
     <div class="gl-user-center-header-bg" :style="headerBgStyles">
       <div class="gl-user-center-header-photo" :style="headerPhotoStyles">
         <img src="/heads/1.jpg" class="img-block"/>
+        <div class="gl-user-center-header-name" v-if="changeHeader">sdass</div>
       </div>
     </div>
     <div class="gl-user-center-header-fn" v-if="!isMobile">
@@ -11,6 +12,14 @@
         <div class="gl-user-center-header-item" v-for="item in items">
           <div class="gl-user-center-header-item-name">{{item.text}}</div>
           <div :class="itemValueClasses">{{item.value}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="gl-user-center-header-fn-mobile" v-if="isMobile">
+      <div class="gl-user-center-header-items-mobile pb-3">
+        <div class="gl-user-center-header-item-mobile pt-3" v-for="item in items">
+          <div class="gl-user-center-header-item-name-mobile px-2">{{item.text}}：</div>
+          <div class="gl-user-center-header-item-value-mobile">{{item.value}}</div>
         </div>
       </div>
     </div>
@@ -140,7 +149,15 @@ export default {
   padding: 6px;
   box-sizing: border-box;
   background: #fff;
-  overflow: hidden;
+}
+
+.gl-user-center-header-name{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -46px;
+  font-size: 24px;
+  color: #2196F3;
 }
 
 .img-block{
@@ -192,4 +209,33 @@ export default {
 .item-data-small{
   font-size: 14px;
 }
+
+.gl-user-center-header-fn-mobile{
+  position: relative;
+  height: auto;
+  background: #fff;
+}
+
+.gl-user-center-header-items-mobile{
+  position: relative;
+  display: flex;
+  height: auto;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gl-user-center-header-item-mobile{
+  position: relative;
+  flex: 1;
+  min-width: 50%;
+  box-sizing: border-box;
+}
+
+.gl-user-center-header-item-name-mobile,.gl-user-center-header-item-value-mobile{
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  color: #2196F3;
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="gl-app">
     <v-app>
-      <v-toolbar color="blue" dark app class="hidden-sm-and-down">
+      <v-toolbar color="blue" dark app class="hidden-sm-and-down custom-nav">
         <v-toolbar-title>GameLife</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
@@ -19,7 +19,7 @@
       </v-toolbar>
 
       <v-navigation-drawer
-          class="hidden-md-and-up blue"
+          class="hidden-md-and-up blue custom-nav"
           width="240"
           v-model="navToggle"
           dark
@@ -66,7 +66,7 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-toolbar color="blue" dark app class="hidden-md-and-up">
+      <v-toolbar color="blue" dark app class="hidden-md-and-up custom-nav">
         <v-toolbar-side-icon @click="navToggle = true"></v-toolbar-side-icon>
         <v-spacer></v-spacer>
         <v-toolbar-items>
@@ -253,6 +253,10 @@ export default {
 
 .active-nuxt{
   color: #ffd455;
+}
+
+.custom-nav{
+  z-index: 9999;
 }
 
 .fPart-lists{
