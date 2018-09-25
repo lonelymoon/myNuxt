@@ -211,11 +211,11 @@ export default {
           icon: 'fas fa-user-secret',
           text: '关于我们'
         },
-        {
+        /* {
           link: '/know',
           icon: 'home',
           text: '知识点'
-        },
+        }, */
         last
       ]
     },
